@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta name="description" content="Daniel Welsh builds apps, websites, and things—and explains how they work." />
+    <link rel="icon" href="data:," />
+    <title>Daniel Welsh — Font options</title>
+    <script>
+      (() => {
+        const options = new Set(['raptor', 'acid', 'inter-light', 'inter-heavy']);
+        const requested = new URLSearchParams(location.search).get('font');
+        document.documentElement.dataset.headlineFont = options.has(requested) ? requested : 'acid';
+      })();
+    </script>
+    <style>
+      @font-face {
+        font-family: "Acid Grotesk";
+        src: url("./fonts/acid-grotesk-light.otf") format("opentype");
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Inter";
+        src: url("./fonts/Inter-Light.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Raptor V3";
+        src: url("./fonts/RaptorV3-Black.otf") format("opentype");
+        font-style: normal;
+        font-weight: 900;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Inter Variable";
+        src: url("./fonts/Inter-Variable.ttf") format("truetype-variations");
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+      }
+
+      :root {
+        --paper: #f3f0e9;
+        --ink: #1f211e;
+        --muted: #6f716a;
+        --accent: #a43e35;
+      }
+
+      * { box-sizing: border-box; }
+
+      html,
+      body {
+        min-width: 320px;
+        min-height: 100%;
+        margin: 0;
+        background: var(--paper);
+      }
+
+      body {
+        overflow-x: hidden;
+        color: var(--ink);
+        font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+        font-weight: 300;
+      }
+
+      .font-switcher {
+        position: fixed;
+        z-index: 20;
+        top: 16px;
+        right: 16px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 5px;
+        border: 1px solid rgba(31, 33, 30, 0.2);
+        background: rgba(243, 240, 233, 0.9);
+        box-shadow: 0 10px 32px rgba(31, 33, 30, 0.08);
+        backdrop-filter: blur(12px);
+      }
+
+      .font-switcher-label,
+      .font-choice {
+        font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+        font-size: 10px;
+        font-weight: 300;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .font-switcher-label {
+        padding: 8px 7px 8px 8px;
+        color: var(--muted);
+      }
+
+      .font-choice {
+        padding: 8px 9px;
+        color: var(--ink);
+        text-decoration: none;
+      }
+
+      .font-choice:hover,
+      .font-choice:focus-visible { color: var(--accent); }
+
+      .font-choice:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: -2px;
+      }
+
+      html[data-headline-font="raptor"] .font-choice[data-font="raptor"],
+      html[data-headline-font="acid"] .font-choice[data-font="acid"],
+      html[data-headline-font="inter-light"] .font-choice[data-font="inter-light"],
+      html[data-headline-font="inter-heavy"] .font-choice[data-font="inter-heavy"] {
+        background: var(--accent);
+        color: var(--paper);
+      }
+
+      .hero {
+        isolation: isolate;
+        position: relative;
+        display: grid;
+        min-height: 100svh;
+        align-items: center;
+        overflow: hidden;
+        padding: clamp(28px, 6vw, 92px);
+      }
+
+      .walker-art {
+        --reveal-x: -999px;
+        --reveal-y: -999px;
+        --reveal-radius: clamp(160px, 15vw, 230px);
+        position: absolute;
+        z-index: -2;
+        inset: 2.5svh clamp(-70px, -3.5vw, -22px) 1.5svh auto;
+        height: 96svh;
+        aspect-ratio: 1116 / 2138.4;
+        opacity: 0.34;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .billie-art {
+        --reveal-x: -999px;
+        --reveal-y: -999px;
+        --reveal-radius: clamp(130px, 12vw, 190px);
+        position: absolute;
+        z-index: -2;
+        right: clamp(180px, 28vw, 500px);
+        bottom: 1.5svh;
+        height: clamp(190px, 32svh, 390px);
+        aspect-ratio: 793.6 / 820.8;
+        opacity: 0.34;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .walker-sequence,
+      .laptop-sequence,
+      .billie-sequence {
+        position: absolute;
+        inset: 0;
+      }
+
+      .walker-red-sequence,
+      .laptop-red-sequence,
+      .billie-red-sequence { display: none; }
+
+      .walk-frame,
+      .laptop-frame,
+      .billie-frame {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        opacity: 0;
+      }
+
+      .walk-frame.is-active,
+      .laptop-frame.is-active,
+      .billie-frame.is-active { opacity: 1; }
+
+      .laptop-art {
+        --reveal-x: -999px;
+        --reveal-y: -999px;
+        --reveal-radius: clamp(160px, 15vw, 230px);
+        position: absolute;
+        z-index: 1;
+        left: clamp(28px, 4vw, 64px);
+        top: clamp(18px, 3svh, 44px);
+        width: clamp(312px, 32.5vw, 494px);
+        aspect-ratio: 744 / 550.8;
+        opacity: 0.82;
+        transform: translate3d(0, 0, 0) rotate(-4deg);
+        transform-origin: 58% 58%;
+        filter: drop-shadow(0 20px 20px rgba(31, 33, 30, 0.16));
+        animation: laptop-float 7.5s ease-in-out infinite;
+        will-change: transform;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      @keyframes laptop-float {
+        0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+        50% { transform: translate3d(0, -14px, 0) rotate(-2.5deg); }
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(90deg, var(--paper) 0%, rgba(243, 240, 233, 0.96) 36%, transparent 72%);
+      }
+
+      .copy {
+        position: relative;
+        z-index: 2;
+        width: min(610px, 55vw);
+      }
+
+      .eyebrow {
+        margin: 0 0 22px;
+        color: var(--accent);
+        font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.1;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 10ch;
+        margin: 0;
+        font-family: "Acid Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+        font-size: clamp(68px, 10vw, 152px);
+        font-weight: 300;
+        line-height: 0.96;
+        letter-spacing: -0.035em;
+      }
+
+      html[data-headline-font="raptor"] h1 {
+        max-width: 11ch;
+        font-family: "Raptor V3", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+        font-size: clamp(62px, 9vw, 136px);
+        font-weight: 900;
+        line-height: 0.88;
+        letter-spacing: -0.025em;
+      }
+
+      html[data-headline-font="acid"] h1 {
+        max-width: 10ch;
+        font-family: "Acid Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+        font-size: clamp(68px, 10vw, 152px);
+        font-weight: 300;
+        line-height: 0.96;
+        letter-spacing: -0.035em;
+      }
+
+      html[data-headline-font="inter-light"] h1 {
+        max-width: 10.5ch;
+        font-family: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+        font-size: clamp(64px, 9.4vw, 144px);
+        font-weight: 300;
+        line-height: 0.92;
+        letter-spacing: -0.055em;
+      }
+
+      html[data-headline-font="inter-heavy"] h1 {
+        max-width: 10ch;
+        font-family: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+        font-size: clamp(66px, 10vw, 152px);
+        font-weight: 800;
+        line-height: 0.84;
+        letter-spacing: -0.075em;
+      }
+
+      .build-line,
+      .typed-line { display: block; }
+
+      .typed-line {
+        min-height: 0.96em;
+        white-space: nowrap;
+      }
+
+      .type-cursor {
+        display: inline-block;
+        width: 0.055em;
+        height: 0.72em;
+        margin-left: 0.045em;
+        background: var(--accent);
+        transform: translateY(0.055em);
+        animation: type-cursor-blink 0.82s steps(1, end) infinite;
+      }
+
+      @keyframes type-cursor-blink {
+        0%, 46% { opacity: 1; }
+        47%, 100% { opacity: 0; }
+      }
+
+      .intro {
+        max-width: 32ch;
+        margin: 30px 0 0;
+        color: var(--muted);
+        font-size: clamp(17px, 1.55vw, 22px);
+        font-weight: 300;
+        line-height: 1.1;
+      }
+
+      .motion-toggle {
+        position: absolute;
+        z-index: 3;
+        left: clamp(28px, 6vw, 92px);
+        bottom: clamp(20px, 3vw, 42px);
+        min-height: 40px;
+        padding: 9px 13px;
+        border: 1px solid rgba(31, 33, 30, 0.42);
+        background: rgba(243, 240, 233, 0.78);
+        color: var(--muted);
+        font: 700 10px/1 "SFMono-Regular", Consolas, monospace;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      .motion-toggle:hover { border-color: var(--accent); color: var(--accent); }
+      .motion-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+      .hero.is-paused .laptop-art,
+      .hero.is-paused .type-cursor { animation-play-state: paused; }
+
+      @media (hover: hover) and (pointer: fine) {
+        @supports ((mask-image: radial-gradient(circle, #000, transparent)) or (-webkit-mask-image: radial-gradient(circle, #000, transparent))) {
+          .walker-red-sequence,
+          .laptop-red-sequence,
+          .billie-red-sequence {
+            display: block;
+            filter: brightness(0) saturate(100%) invert(38%) sepia(87%) saturate(2220%) hue-rotate(337deg) brightness(108%) contrast(101%);
+            -webkit-mask-image: radial-gradient(
+              circle var(--reveal-radius) at var(--reveal-x) var(--reveal-y),
+              rgba(0, 0, 0, 0.90) 0%,
+              rgba(0, 0, 0, 0.72) 25%,
+              rgba(0, 0, 0, 0.40) 58%,
+              rgba(0, 0, 0, 0.14) 82%,
+              transparent 100%
+            );
+            mask-image: radial-gradient(
+              circle var(--reveal-radius) at var(--reveal-x) var(--reveal-y),
+              rgba(0, 0, 0, 0.90) 0%,
+              rgba(0, 0, 0, 0.72) 25%,
+              rgba(0, 0, 0, 0.40) 58%,
+              rgba(0, 0, 0, 0.14) 82%,
+              transparent 100%
+            );
+          }
+
+          .walker-base-sequence,
+          .laptop-base-sequence,
+          .billie-base-sequence {
+            -webkit-mask-image: radial-gradient(
+              circle var(--reveal-radius) at var(--reveal-x) var(--reveal-y),
+              rgba(0, 0, 0, 0.10) 0%,
+              rgba(0, 0, 0, 0.28) 25%,
+              rgba(0, 0, 0, 0.60) 58%,
+              rgba(0, 0, 0, 0.86) 82%,
+              #000 100%
+            );
+            mask-image: radial-gradient(
+              circle var(--reveal-radius) at var(--reveal-x) var(--reveal-y),
+              rgba(0, 0, 0, 0.10) 0%,
+              rgba(0, 0, 0, 0.28) 25%,
+              rgba(0, 0, 0, 0.60) 58%,
+              rgba(0, 0, 0, 0.86) 82%,
+              #000 100%
+            );
+          }
+        }
+      }
+
+      @media (min-width: 761px) and (max-height: 950px) {
+        .laptop-art { width: clamp(240px, 21vw, 305px); }
+      }
+
+      @media (max-width: 760px) {
+        .font-switcher {
+          top: 10px;
+          right: 10px;
+          left: 10px;
+          justify-content: center;
+        }
+
+        .font-switcher-label { display: none; }
+        .font-choice { padding-inline: clamp(6px, 2.4vw, 10px); }
+
+        .hero {
+          align-items: end;
+          padding-inline: clamp(20px, 6vw, 46px);
+          padding-bottom: 82px;
+        }
+
+        .walker-art {
+          inset: 1.5svh -3vw auto auto;
+          height: 78svh;
+          opacity: 0.31;
+        }
+
+        .billie-art {
+          z-index: 0;
+          right: -2vw;
+          left: auto;
+          top: auto;
+          bottom: 20.5svh;
+          height: min(22svh, 185px);
+          opacity: 0.34;
+        }
+
+        .laptop-art {
+          left: clamp(16px, 5vw, 28px);
+          right: auto;
+          top: clamp(72px, 12svh, 110px);
+          width: min(68vw, 273px);
+          opacity: 0.90;
+          filter: drop-shadow(0 12px 12px rgba(31, 33, 30, 0.12));
+        }
+
+        .hero::after {
+          background: linear-gradient(0deg, var(--paper) 0%, rgba(243, 240, 233, 0.84) 36%, transparent 72%);
+        }
+
+        .copy { width: 100%; }
+        h1 { font-size: clamp(64px, 21vw, 104px); }
+        html[data-headline-font="raptor"] h1 { font-size: clamp(57px, 18vw, 90px); }
+        html[data-headline-font="acid"] h1 { font-size: clamp(64px, 21vw, 104px); }
+        html[data-headline-font="inter-light"] h1 { font-size: clamp(59px, 19.5vw, 96px); }
+        html[data-headline-font="inter-heavy"] h1 { font-size: clamp(60px, 19vw, 96px); }
+        .motion-toggle { left: clamp(20px, 6vw, 46px); bottom: 14px; }
+      }
+
+      @media (max-width: 760px) and (max-height: 600px) {
+        .laptop-art {
+          top: 0;
+          width: min(68vw, 215px);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .laptop-art { animation: none; transform: rotate(-4deg); will-change: auto; }
+        .type-cursor { display: none; }
+        .motion-toggle { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="font-switcher" aria-label="Headline font options">
+      <span class="font-switcher-label">Headline</span>
+      <a class="font-choice" data-font="raptor" href="?font=raptor" title="Raptor V3 Black — Routiq logo display">Raptor</a>
+      <a class="font-choice" data-font="acid" href="?font=acid" title="Acid Grotesk Light — Routiq headline">Acid</a>
+      <a class="font-choice" data-font="inter-light" href="?font=inter-light" title="Inter Light — Routiq information type">Inter Light</a>
+      <a class="font-choice" data-font="inter-heavy" href="?font=inter-heavy" title="Inter Heavy — original bold reference">Inter Heavy</a>
+    </nav>
+    <script>
+      document.querySelector(`.font-choice[data-font="${document.documentElement.dataset.headlineFont}"]`)?.setAttribute('aria-current', 'page');
+    </script>
+    <main class="hero">
+      <div class="walker-art" role="img" aria-label="Daniel walking, rendered as a chronological sixty-frame ASCII animation">
+        <div class="walker-sequence walker-base-sequence">
+          <img class="walk-frame is-active" data-frame="0" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-000.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="1" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-001.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="2" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-002.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="3" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-003.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="4" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-004.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="5" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-005.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="6" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-006.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="7" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-007.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="8" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-008.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="9" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-009.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="10" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-010.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="11" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-011.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="12" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-012.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="13" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-013.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="14" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-014.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="15" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-015.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="16" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-016.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="17" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-017.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="18" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-018.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="19" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-019.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="20" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-020.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="21" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-021.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="22" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-022.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="23" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-023.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="24" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-024.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="25" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-025.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="26" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-026.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="27" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-027.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="28" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-028.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="29" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-029.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="30" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-030.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="31" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-031.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="32" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-032.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="33" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-033.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="34" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-034.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="35" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-035.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="36" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-036.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="37" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-037.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="38" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-038.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="39" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-039.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="40" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-040.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="41" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-041.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="42" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-042.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="43" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-043.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="44" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-044.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="45" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-045.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="46" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-046.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="47" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-047.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="48" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-048.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="49" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-049.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="50" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-050.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="51" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-051.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="52" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-052.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="53" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-053.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="54" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-054.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="55" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-055.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="56" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-056.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="57" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-057.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="58" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-058.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="59" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-059.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+        </div>
+        <div class="walker-sequence walker-red-sequence" aria-hidden="true">
+          <img class="walk-frame is-active" data-frame="0" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-000.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="1" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-001.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="2" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-002.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="3" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-003.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="4" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-004.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="5" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-005.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="6" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-006.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="7" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-007.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="8" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-008.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="9" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-009.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="10" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-010.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="11" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-011.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="12" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-012.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="13" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-013.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="14" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-014.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="15" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-015.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="16" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-016.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="17" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-017.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="18" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-018.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="19" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-019.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="20" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-020.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="21" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-021.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="22" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-022.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="23" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-023.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="24" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-024.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="25" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-025.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="26" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-026.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="27" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-027.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="28" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-028.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="29" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-029.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="30" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-030.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="31" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-031.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="32" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-032.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="33" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-033.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="34" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-034.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="35" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-035.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="36" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-036.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="37" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-037.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="38" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-038.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="39" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-039.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="40" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-040.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="41" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-041.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="42" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-042.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="43" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-043.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="44" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-044.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="45" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-045.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="46" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-046.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="47" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-047.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="48" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-048.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="49" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-049.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="50" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-050.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="51" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-051.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="52" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-052.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="53" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-053.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="54" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-054.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="55" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-055.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="56" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-056.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="57" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-057.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="58" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-058.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="walk-frame" data-frame="59" src="./site-assets/higgsfield-b2-ascii-walk-with-hat/frame-059.svg?v=3" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+        </div>
+      </div>
+
+      <div class="billie-art" role="img" aria-label="Billie, a Kintamani dog, walking beside Daniel in ASCII">
+        <div class="billie-sequence billie-base-sequence"></div>
+        <div class="billie-sequence billie-red-sequence" aria-hidden="true"></div>
+      </div>
+
+      <div class="laptop-art" role="img" aria-label="A floating ASCII laptop spinning, closing and reopening">
+        <div class="laptop-sequence laptop-base-sequence">
+          <img class="laptop-frame is-active" data-frame="0" src="./site-assets/higgsfield-laptop-ascii/frame-000.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="1" src="./site-assets/higgsfield-laptop-ascii/frame-001.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="2" src="./site-assets/higgsfield-laptop-ascii/frame-002.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="3" src="./site-assets/higgsfield-laptop-ascii/frame-003.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="4" src="./site-assets/higgsfield-laptop-ascii/frame-004.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="5" src="./site-assets/higgsfield-laptop-ascii/frame-005.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="6" src="./site-assets/higgsfield-laptop-ascii/frame-006.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="7" src="./site-assets/higgsfield-laptop-ascii/frame-007.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="8" src="./site-assets/higgsfield-laptop-ascii/frame-008.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="9" src="./site-assets/higgsfield-laptop-ascii/frame-009.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="10" src="./site-assets/higgsfield-laptop-ascii/frame-010.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="11" src="./site-assets/higgsfield-laptop-ascii/frame-011.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="12" src="./site-assets/higgsfield-laptop-ascii/frame-012.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="13" src="./site-assets/higgsfield-laptop-ascii/frame-013.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="14" src="./site-assets/higgsfield-laptop-ascii/frame-014.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="15" src="./site-assets/higgsfield-laptop-ascii/frame-015.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="16" src="./site-assets/higgsfield-laptop-ascii/frame-016.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="17" src="./site-assets/higgsfield-laptop-ascii/frame-017.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="18" src="./site-assets/higgsfield-laptop-ascii/frame-018.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="19" src="./site-assets/higgsfield-laptop-ascii/frame-019.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="20" src="./site-assets/higgsfield-laptop-ascii/frame-020.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="21" src="./site-assets/higgsfield-laptop-ascii/frame-021.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="22" src="./site-assets/higgsfield-laptop-ascii/frame-022.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="23" src="./site-assets/higgsfield-laptop-ascii/frame-023.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="24" src="./site-assets/higgsfield-laptop-ascii/frame-024.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="25" src="./site-assets/higgsfield-laptop-ascii/frame-025.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="26" src="./site-assets/higgsfield-laptop-ascii/frame-026.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="27" src="./site-assets/higgsfield-laptop-ascii/frame-027.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="28" src="./site-assets/higgsfield-laptop-ascii/frame-028.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="29" src="./site-assets/higgsfield-laptop-ascii/frame-029.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="30" src="./site-assets/higgsfield-laptop-ascii/frame-030.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="31" src="./site-assets/higgsfield-laptop-ascii/frame-031.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="32" src="./site-assets/higgsfield-laptop-ascii/frame-032.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="33" src="./site-assets/higgsfield-laptop-ascii/frame-033.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="34" src="./site-assets/higgsfield-laptop-ascii/frame-034.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="35" src="./site-assets/higgsfield-laptop-ascii/frame-035.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="36" src="./site-assets/higgsfield-laptop-ascii/frame-036.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="37" src="./site-assets/higgsfield-laptop-ascii/frame-037.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="38" src="./site-assets/higgsfield-laptop-ascii/frame-038.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="39" src="./site-assets/higgsfield-laptop-ascii/frame-039.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="40" src="./site-assets/higgsfield-laptop-ascii/frame-040.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="41" src="./site-assets/higgsfield-laptop-ascii/frame-041.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="42" src="./site-assets/higgsfield-laptop-ascii/frame-042.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="43" src="./site-assets/higgsfield-laptop-ascii/frame-043.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="44" src="./site-assets/higgsfield-laptop-ascii/frame-044.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="45" src="./site-assets/higgsfield-laptop-ascii/frame-045.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="46" src="./site-assets/higgsfield-laptop-ascii/frame-046.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="47" src="./site-assets/higgsfield-laptop-ascii/frame-047.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="48" src="./site-assets/higgsfield-laptop-ascii/frame-048.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="49" src="./site-assets/higgsfield-laptop-ascii/frame-049.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="50" src="./site-assets/higgsfield-laptop-ascii/frame-050.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="51" src="./site-assets/higgsfield-laptop-ascii/frame-051.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="52" src="./site-assets/higgsfield-laptop-ascii/frame-052.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="53" src="./site-assets/higgsfield-laptop-ascii/frame-053.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="54" src="./site-assets/higgsfield-laptop-ascii/frame-054.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="55" src="./site-assets/higgsfield-laptop-ascii/frame-055.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="56" src="./site-assets/higgsfield-laptop-ascii/frame-056.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="57" src="./site-assets/higgsfield-laptop-ascii/frame-057.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="58" src="./site-assets/higgsfield-laptop-ascii/frame-058.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="59" src="./site-assets/higgsfield-laptop-ascii/frame-059.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+        </div>
+        <div class="laptop-sequence laptop-red-sequence" aria-hidden="true">
+          <img class="laptop-frame is-active" data-frame="0" src="./site-assets/higgsfield-laptop-ascii/frame-000.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="1" src="./site-assets/higgsfield-laptop-ascii/frame-001.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="2" src="./site-assets/higgsfield-laptop-ascii/frame-002.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="3" src="./site-assets/higgsfield-laptop-ascii/frame-003.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="4" src="./site-assets/higgsfield-laptop-ascii/frame-004.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="5" src="./site-assets/higgsfield-laptop-ascii/frame-005.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="6" src="./site-assets/higgsfield-laptop-ascii/frame-006.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="7" src="./site-assets/higgsfield-laptop-ascii/frame-007.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="8" src="./site-assets/higgsfield-laptop-ascii/frame-008.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="9" src="./site-assets/higgsfield-laptop-ascii/frame-009.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="10" src="./site-assets/higgsfield-laptop-ascii/frame-010.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="11" src="./site-assets/higgsfield-laptop-ascii/frame-011.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="12" src="./site-assets/higgsfield-laptop-ascii/frame-012.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="13" src="./site-assets/higgsfield-laptop-ascii/frame-013.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="14" src="./site-assets/higgsfield-laptop-ascii/frame-014.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="15" src="./site-assets/higgsfield-laptop-ascii/frame-015.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="16" src="./site-assets/higgsfield-laptop-ascii/frame-016.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="17" src="./site-assets/higgsfield-laptop-ascii/frame-017.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="18" src="./site-assets/higgsfield-laptop-ascii/frame-018.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="19" src="./site-assets/higgsfield-laptop-ascii/frame-019.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="20" src="./site-assets/higgsfield-laptop-ascii/frame-020.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="21" src="./site-assets/higgsfield-laptop-ascii/frame-021.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="22" src="./site-assets/higgsfield-laptop-ascii/frame-022.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="23" src="./site-assets/higgsfield-laptop-ascii/frame-023.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="24" src="./site-assets/higgsfield-laptop-ascii/frame-024.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="25" src="./site-assets/higgsfield-laptop-ascii/frame-025.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="26" src="./site-assets/higgsfield-laptop-ascii/frame-026.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="27" src="./site-assets/higgsfield-laptop-ascii/frame-027.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="28" src="./site-assets/higgsfield-laptop-ascii/frame-028.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="29" src="./site-assets/higgsfield-laptop-ascii/frame-029.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="30" src="./site-assets/higgsfield-laptop-ascii/frame-030.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="31" src="./site-assets/higgsfield-laptop-ascii/frame-031.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="32" src="./site-assets/higgsfield-laptop-ascii/frame-032.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="33" src="./site-assets/higgsfield-laptop-ascii/frame-033.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="34" src="./site-assets/higgsfield-laptop-ascii/frame-034.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="35" src="./site-assets/higgsfield-laptop-ascii/frame-035.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="36" src="./site-assets/higgsfield-laptop-ascii/frame-036.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="37" src="./site-assets/higgsfield-laptop-ascii/frame-037.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="38" src="./site-assets/higgsfield-laptop-ascii/frame-038.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="39" src="./site-assets/higgsfield-laptop-ascii/frame-039.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="40" src="./site-assets/higgsfield-laptop-ascii/frame-040.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="41" src="./site-assets/higgsfield-laptop-ascii/frame-041.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="42" src="./site-assets/higgsfield-laptop-ascii/frame-042.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="43" src="./site-assets/higgsfield-laptop-ascii/frame-043.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="44" src="./site-assets/higgsfield-laptop-ascii/frame-044.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="45" src="./site-assets/higgsfield-laptop-ascii/frame-045.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="46" src="./site-assets/higgsfield-laptop-ascii/frame-046.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="47" src="./site-assets/higgsfield-laptop-ascii/frame-047.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="48" src="./site-assets/higgsfield-laptop-ascii/frame-048.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="49" src="./site-assets/higgsfield-laptop-ascii/frame-049.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="50" src="./site-assets/higgsfield-laptop-ascii/frame-050.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="51" src="./site-assets/higgsfield-laptop-ascii/frame-051.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="52" src="./site-assets/higgsfield-laptop-ascii/frame-052.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="53" src="./site-assets/higgsfield-laptop-ascii/frame-053.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="54" src="./site-assets/higgsfield-laptop-ascii/frame-054.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="55" src="./site-assets/higgsfield-laptop-ascii/frame-055.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="56" src="./site-assets/higgsfield-laptop-ascii/frame-056.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="57" src="./site-assets/higgsfield-laptop-ascii/frame-057.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="58" src="./site-assets/higgsfield-laptop-ascii/frame-058.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+          <img class="laptop-frame" data-frame="59" src="./site-assets/higgsfield-laptop-ascii/frame-059.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
+        </div>
+      </div>
+
+      <section class="copy">
+        <p class="eyebrow">Daniel Welsh - Routiq.</p>
+        <h1 aria-label="I build apps, websites, and things.">
+          <span class="build-line">I build</span>
+          <span class="typed-line" aria-hidden="true"><span id="typed-word">things.</span><span class="type-cursor"></span></span>
+        </h1>
+        <p class="intro">And I explain how they work</p>
+      </section>
+
+      <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="true">Pause motion</button>
+    </main>
+
+    <script>
+      const billieSequenceMarkup = Array.from({ length: 60 }, (_, index) => {
+        const number = String(index).padStart(3, '0');
+        const active = index === 0 ? ' is-active' : '';
+        return `<img class="billie-frame${active}" data-frame="${index}" src="./site-assets/billie-ascii-walk/frame-${number}.svg?v=1" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">`;
+      }).join('');
+      document.querySelector('.billie-base-sequence').innerHTML = billieSequenceMarkup;
+      document.querySelector('.billie-red-sequence').innerHTML = billieSequenceMarkup;
+
+      const hero = document.querySelector('.hero');
+      const walkerArt = document.querySelector('.walker-art');
+      const laptopArt = document.querySelector('.laptop-art');
+      const billieArt = document.querySelector('.billie-art');
+      const frames = [...document.querySelectorAll('.walker-base-sequence .walk-frame')];
+      const redFrames = [...document.querySelectorAll('.walker-red-sequence .walk-frame')];
+      const laptopFrames = [...document.querySelectorAll('.laptop-base-sequence .laptop-frame')];
+      const redLaptopFrames = [...document.querySelectorAll('.laptop-red-sequence .laptop-frame')];
+      const billieFrames = [...document.querySelectorAll('.billie-base-sequence .billie-frame')];
+      const redBillieFrames = [...document.querySelectorAll('.billie-red-sequence .billie-frame')];
+      const toggle = document.getElementById('motion-toggle');
+      const typedWord = document.getElementById('typed-word');
+      const typePhrases = ['apps.', 'websites.', 'things.'];
+      const frameDuration = 83.33333333333333;
+      const walkerLoopDuration = frameDuration * frames.length;
+      const laptopLoopDuration = 7500;
+      const typePhraseDuration = 2500;
+      const typeLoopDuration = typePhraseDuration * typePhrases.length;
+      const typeHoldUntil = 1800;
+      const typeCharacterDuration = 85;
+      const typeEraseDuration = 55;
+      const timelineDuration = 15000;
+      const laptopFrameDuration = laptopLoopDuration / laptopFrames.length;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
+      let walkerCurrent = 0;
+      let laptopCurrent = 0;
+      let elapsed = 0;
+      let startedAt = 0;
+      let raf = 0;
+      let running = !reduced;
+      let revealRaf = 0;
+      let pointerX = -999;
+      let pointerY = -999;
+
+      function showWalker(index) {
+        if (index === walkerCurrent && frames[index]?.classList.contains('is-active')) return;
+        frames[walkerCurrent]?.classList.remove('is-active');
+        redFrames[walkerCurrent]?.classList.remove('is-active');
+        billieFrames[walkerCurrent]?.classList.remove('is-active');
+        redBillieFrames[walkerCurrent]?.classList.remove('is-active');
+        walkerCurrent = index;
+        frames[walkerCurrent].classList.add('is-active');
+        redFrames[walkerCurrent].classList.add('is-active');
+        billieFrames[walkerCurrent].classList.add('is-active');
+        redBillieFrames[walkerCurrent].classList.add('is-active');
+      }
+
+      function showLaptop(index) {
+        if (index === laptopCurrent && laptopFrames[index]?.classList.contains('is-active')) return;
+        laptopFrames[laptopCurrent]?.classList.remove('is-active');
+        redLaptopFrames[laptopCurrent]?.classList.remove('is-active');
+        laptopCurrent = index;
+        laptopFrames[laptopCurrent].classList.add('is-active');
+        redLaptopFrames[laptopCurrent].classList.add('is-active');
+      }
+
+      function updateTypewriter(time) {
+        if (reduced) return;
+        const loopTime = time % typeLoopDuration;
+        const phraseIndex = Math.floor(loopTime / typePhraseDuration);
+        const phrase = typePhrases[phraseIndex];
+        const phraseTime = loopTime % typePhraseDuration;
+        let visibleCharacters;
+
+        if (phraseTime < typeHoldUntil) {
+          visibleCharacters = Math.min(
+            phrase.length,
+            Math.floor(phraseTime / typeCharacterDuration) + 1,
+          );
+        } else {
+          visibleCharacters = Math.max(
+            0,
+            phrase.length - Math.floor((phraseTime - typeHoldUntil) / typeEraseDuration) - 1,
+          );
+        }
+
+        typedWord.textContent = phrase.slice(0, visibleCharacters);
+      }
+
+      function tick(now) {
+        elapsed = Math.max(0, now - startedAt) % timelineDuration;
+        showWalker(Math.floor((elapsed % walkerLoopDuration) / frameDuration) % frames.length);
+        showLaptop(Math.floor((elapsed % laptopLoopDuration) / laptopFrameDuration) % laptopFrames.length);
+        updateTypewriter(elapsed);
+        raf = requestAnimationFrame(tick);
+      }
+
+      function updateReveal() {
+        for (const art of [walkerArt, laptopArt, billieArt]) {
+          const rect = art.getBoundingClientRect();
+          art.style.setProperty('--reveal-x', (pointerX - rect.left) + 'px');
+          art.style.setProperty('--reveal-y', (pointerY - rect.top) + 'px');
+        }
+        revealRaf = 0;
+      }
+
+      function hideReveal() {
+        pointerX = -999;
+        pointerY = -999;
+        updateReveal();
+      }
+
+      if (finePointer) {
+        hero.addEventListener('pointermove', (event) => {
+          pointerX = event.clientX;
+          pointerY = event.clientY;
+          if (!revealRaf) revealRaf = requestAnimationFrame(updateReveal);
+        }, { passive: true });
+        hero.addEventListener('pointerleave', hideReveal);
+        hero.addEventListener('pointercancel', hideReveal);
+        window.addEventListener('blur', hideReveal);
+      }
+
+      function play() {
+        running = true;
+        hero.classList.remove('is-paused');
+        startedAt = performance.now() - elapsed;
+        toggle.textContent = 'Pause motion';
+        toggle.setAttribute('aria-pressed', 'true');
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(tick);
+      }
+
+      function pause() {
+        if (running) elapsed = Math.max(0, performance.now() - startedAt) % timelineDuration;
+        running = false;
+        hero.classList.add('is-paused');
+        cancelAnimationFrame(raf);
+        toggle.textContent = 'Play motion';
+        toggle.setAttribute('aria-pressed', 'false');
+      }
+
+      toggle.addEventListener('click', () => running ? pause() : play());
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) cancelAnimationFrame(raf);
+        else if (running) {
+          startedAt = performance.now() - elapsed;
+          raf = requestAnimationFrame(tick);
+        }
+      });
+
+      if (!reduced) updateTypewriter(0);
+
+      Promise.allSettled([...frames, ...redFrames, ...laptopFrames, ...redLaptopFrames, ...billieFrames, ...redBillieFrames].map((frame) => frame.decode())).then(() => {
+        if (running) play();
+        else pause();
+      });
+    </script>
+  </body>
+</html>

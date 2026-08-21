@@ -15,6 +15,7 @@ Then open [http://127.0.0.1:4173](http://127.0.0.1:4173).
 ## Structure
 
 - `index.html` — complete site, styles, and animation runtime
+- `font-options.html` — full-site headline comparison for Raptor V3, Acid Grotesk, Inter Light, and Inter Heavy
 - `site-assets/higgsfield-b2-ascii-walk-with-hat/` — character frames
 - `site-assets/billie-ascii-walk/` — Billie’s Kintamani walk frames
 - `site-assets/billie-higgsfield-walk-tail-up.mp4` — approved Billie source loop
