@@ -208,15 +208,11 @@
         line-height: 1.1;
       }
 
-      .motion-toggle {
-        position: absolute;
-        z-index: 3;
-        left: clamp(28px, 6vw, 92px);
-        bottom: clamp(20px, 3vw, 42px);
+      .control-button {
         min-height: 40px;
         padding: 9px 13px;
         border: 1px solid rgba(31, 33, 30, 0.42);
-        background: rgba(243, 240, 233, 0.78);
+        background: rgba(243, 240, 233, 0.92);
         color: var(--muted);
         font: 700 10px/1 "SFMono-Regular", Consolas, monospace;
         letter-spacing: 0.12em;
@@ -224,8 +220,115 @@
         cursor: pointer;
       }
 
-      .motion-toggle:hover { border-color: var(--accent); color: var(--accent); }
-      .motion-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+      .control-button:hover,
+      .menu-close:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .control-button:focus-visible,
+      .menu-close:focus-visible,
+      .site-menu__link:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .menu-toggle {
+        position: absolute;
+        z-index: 3;
+        left: clamp(28px, 6vw, 92px);
+        bottom: clamp(20px, 3vw, 42px);
+      }
+
+      .site-menu {
+        position: fixed;
+        inset: auto auto clamp(20px, 3vw, 42px) clamp(28px, 6vw, 92px);
+        width: min(440px, calc(100vw - 40px));
+        max-width: none;
+        max-height: calc(100dvh - 40px);
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+        border: 1px solid rgba(31, 33, 30, 0.42);
+        background: rgba(243, 240, 233, 0.98);
+        color: var(--ink);
+        box-shadow: 0 24px 70px rgba(31, 33, 30, 0.2);
+      }
+
+      .site-menu::backdrop {
+        background: rgba(31, 33, 30, 0.34);
+        backdrop-filter: blur(2px);
+      }
+
+      .site-menu__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 17px 18px;
+      }
+
+      .site-menu__title {
+        margin: 0;
+        color: var(--accent);
+        font: 700 11px/1 "SFMono-Regular", Consolas, monospace;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .menu-close {
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        font: 700 10px/1 "SFMono-Regular", Consolas, monospace;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+
+      .site-menu__nav {
+        display: grid;
+        border-top: 1px solid rgba(31, 33, 30, 0.18);
+      }
+
+      .site-menu__link {
+        display: grid;
+        grid-template-columns: 34px 1fr;
+        gap: 4px 12px;
+        align-items: baseline;
+        padding: 18px;
+        border-bottom: 1px solid rgba(31, 33, 30, 0.18);
+        color: var(--ink);
+        font-family: "Acid Grotesk", "Inter", sans-serif;
+        font-size: clamp(27px, 4vw, 40px);
+        font-weight: 300;
+        line-height: 0.98;
+        text-decoration: none;
+      }
+
+      .site-menu__link small {
+        color: var(--accent);
+        font: 700 9px/1 "SFMono-Regular", Consolas, monospace;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .site-menu__link span { grid-column: 2; }
+      .site-menu__link:is(a):hover { color: var(--accent); }
+
+      .site-menu__link.is-disabled {
+        color: var(--muted);
+        opacity: 0.58;
+      }
+
+      .site-menu .motion-toggle {
+        display: block;
+        width: calc(100% - 36px);
+        margin: 18px;
+        text-align: left;
+      }
+
+      body.menu-open { overflow: hidden; }
 
       .hero.is-paused .laptop-art,
       .hero.is-paused .type-cursor { animation-play-state: paused; }
@@ -320,7 +423,16 @@
 
         .copy { width: 100%; }
         h1 { font-size: clamp(64px, 21vw, 104px); }
-        .motion-toggle { left: clamp(20px, 6vw, 46px); bottom: 14px; }
+        .menu-toggle {
+          left: clamp(20px, 6vw, 46px);
+          bottom: calc(14px + env(safe-area-inset-bottom));
+        }
+
+        .site-menu {
+          inset: auto 12px calc(12px + env(safe-area-inset-bottom)) 12px;
+          width: auto;
+          max-height: calc(100dvh - 24px - env(safe-area-inset-bottom));
+        }
       }
 
       @media (max-width: 760px) and (max-height: 600px) {
@@ -333,7 +445,6 @@
       @media (prefers-reduced-motion: reduce) {
         .laptop-art { animation: none; transform: rotate(-4deg); will-change: auto; }
         .type-cursor { display: none; }
-        .motion-toggle { display: none; }
       }
     </style>
   </head>
@@ -607,8 +718,43 @@
         <p class="intro">And I explain how they work.</p>
       </section>
 
-      <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="true">Pause motion</button>
+      <button
+        class="control-button menu-toggle"
+        id="menu-toggle"
+        type="button"
+        aria-haspopup="dialog"
+        aria-expanded="false"
+        aria-controls="site-menu"
+      >
+        Menu
+      </button>
     </main>
+
+    <dialog class="site-menu" id="site-menu" aria-labelledby="site-menu-title">
+      <header class="site-menu__header">
+        <p class="site-menu__title" id="site-menu-title">Daniel Welsh · Routiq</p>
+        <button class="menu-close" id="menu-close" type="button" aria-label="Close menu">Close</button>
+      </header>
+
+      <nav class="site-menu__nav" aria-label="Primary navigation">
+        <a class="site-menu__link" href="./" aria-current="page">
+          <small>00</small>
+          <span>Home</span>
+        </a>
+        <a class="site-menu__link" href="./blog/how-we-made-this-website/">
+          <small>01</small>
+          <span>How we made this website walk</span>
+        </a>
+        <span class="site-menu__link is-disabled" aria-disabled="true">
+          <small>Soon</small>
+          <span>Tutorials</span>
+        </span>
+      </nav>
+
+      <button class="control-button motion-toggle" id="motion-toggle" type="button" aria-pressed="true">
+        Pause motion
+      </button>
+    </dialog>
 
     <script>
       const billieSequenceMarkup = Array.from({ length: 60 }, (_, index) => {
@@ -630,6 +776,9 @@
       const billieFrames = [...document.querySelectorAll('.billie-base-sequence .billie-frame')];
       const redBillieFrames = [...document.querySelectorAll('.billie-red-sequence .billie-frame')];
       const toggle = document.getElementById('motion-toggle');
+      const menuToggle = document.getElementById('menu-toggle');
+      const siteMenu = document.getElementById('site-menu');
+      const menuClose = document.getElementById('menu-close');
       const typedWord = document.getElementById('typed-word');
       const typePhrases = ['apps.', 'websites.', 'things.'];
       const frameDuration = 83.33333333333333;
@@ -751,6 +900,35 @@
         toggle.textContent = 'Play motion';
         toggle.setAttribute('aria-pressed', 'false');
       }
+
+      function openMenu() {
+        siteMenu.showModal();
+        menuToggle.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('menu-open');
+        menuClose.focus();
+      }
+
+      function closeMenu() {
+        if (siteMenu.open) siteMenu.close();
+      }
+
+      menuToggle.addEventListener('click', openMenu);
+      menuClose.addEventListener('click', closeMenu);
+      siteMenu.addEventListener('click', (event) => {
+        const rect = siteMenu.getBoundingClientRect();
+        const outside =
+          event.clientX < rect.left ||
+          event.clientX > rect.right ||
+          event.clientY < rect.top ||
+          event.clientY > rect.bottom;
+
+        if (event.target === siteMenu && outside) closeMenu();
+      });
+      siteMenu.addEventListener('close', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        menuToggle.focus();
+      });
 
       toggle.addEventListener('click', () => running ? pause() : play());
       document.addEventListener('visibilitychange', () => {

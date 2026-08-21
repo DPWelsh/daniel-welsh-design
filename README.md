@@ -2,7 +2,7 @@
 
 Personal brand website for Daniel Welsh: builder, designer, and product storyteller.
 
-The site is a dependency-free static page with animated ASCII artwork, Daniel and Billie walking together, a floating laptop, responsive layouts, reduced-motion support, and a cursor-driven colour shimmer.
+The site is dependency-free static HTML with animated ASCII artwork, a floating laptop, responsive layouts, reduced-motion support, a cursor-driven colour shimmer, and a small build journal.
 
 ## Run locally
 
@@ -15,6 +15,7 @@ Then open [http://127.0.0.1:4173](http://127.0.0.1:4173).
 ## Structure
 
 - `index.html` — complete site, styles, and animation runtime
+- `blog/how-we-made-this-website/index.html` — Build Note 001, covering the Higgsfield-to-ASCII production process
 - `font-options.html` — full-site headline comparison for Raptor V3, Acid Grotesk, Inter Light, and Inter Heavy
 - `site-assets/higgsfield-b2-ascii-walk-with-hat/` — character frames
 - `site-assets/billie-ascii-walk/` — Billie’s Kintamani walk frames

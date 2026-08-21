@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="How Daniel Welsh turned an AI portrait into a sixty-frame ASCII walking loop for his personal website."
+    />
+    <link rel="icon" href="data:," />
+    <title>How we made this website walk — Daniel Welsh</title>
+    <style>
+      @font-face {
+        font-family: "Raptor V3";
+        src: url("../../fonts/RaptorV3-Black.otf") format("opentype");
+        font-style: normal;
+        font-weight: 900;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Acid Grotesk";
+        src: url("../../fonts/acid-grotesk-light.otf") format("opentype");
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Inter";
+        src: url("../../fonts/Inter-Variable.ttf") format("truetype");
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+      }
+
+      :root {
+        --paper: #f3f0e9;
+        --ink: #1f211e;
+        --muted: #6f716a;
+        --line: rgba(31, 33, 30, 0.24);
+        --accent: #a43e35;
+        --measure: 720px;
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        min-width: 320px;
+        background: var(--paper);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+        font-weight: 350;
+        text-rendering: optimizeLegibility;
+      }
+
+      a { color: inherit; }
+
+      a:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 4px;
+      }
+
+      .skip-link {
+        position: fixed;
+        z-index: 10;
+        top: 12px;
+        left: 12px;
+        padding: 10px 14px;
+        background: var(--ink);
+        color: var(--paper);
+        transform: translateY(-180%);
+      }
+
+      .skip-link:focus { transform: translateY(0); }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        width: 100%;
+        min-height: 76px;
+        padding: 18px clamp(22px, 5vw, 76px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        color: var(--accent);
+        font-family: "Raptor V3", Impact, sans-serif;
+        font-size: 22px;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .brand-name,
+      .nav-label,
+      .meta,
+      .section-number,
+      .pipeline-step strong,
+      .footer-label {
+        font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .brand-name { color: var(--muted); }
+
+      .home-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .home-link::before {
+        content: "\2190";
+        color: var(--accent);
+        font-size: 18px;
+        line-height: 1;
+        transition: transform 160ms ease;
+      }
+
+      .home-link:hover { color: var(--ink); }
+      .home-link:hover::before { transform: translateX(-4px); }
+
+      .article-hero {
+        position: relative;
+        isolation: isolate;
+        display: grid;
+        grid-template-columns: minmax(0, 1.18fr) minmax(280px, 0.82fr);
+        min-height: min(830px, calc(100svh - 76px));
+        border-bottom: 1px solid var(--line);
+        overflow: hidden;
+      }
+
+      .hero-copy {
+        z-index: 2;
+        align-self: end;
+        padding: clamp(72px, 10vw, 160px) clamp(22px, 5vw, 76px) clamp(54px, 7vw, 104px);
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 24px;
+        margin: 0 0 32px;
+        color: var(--accent);
+      }
+
+      h1,
+      h2,
+      .pull-quote {
+        font-family: "Acid Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+        font-weight: 300;
+        letter-spacing: -0.035em;
+      }
+
+      h1 {
+        max-width: 9.5ch;
+        margin: 0;
+        font-size: clamp(68px, 9.2vw, 148px);
+        line-height: 0.9;
+      }
+
+      .dek {
+        max-width: 34ch;
+        margin: 34px 0 0;
+        color: var(--muted);
+        font-size: clamp(18px, 1.7vw, 24px);
+        line-height: 1.35;
+      }
+
+      .hero-art {
+        position: relative;
+        min-height: 620px;
+        background:
+          linear-gradient(90deg, var(--paper) 0%, rgba(243, 240, 233, 0.2) 30%, transparent 72%),
+          repeating-linear-gradient(90deg, transparent 0 79px, rgba(31, 33, 30, 0.05) 80px),
+          repeating-linear-gradient(0deg, transparent 0 79px, rgba(31, 33, 30, 0.05) 80px);
+      }
+
+      .hero-person {
+        position: absolute;
+        right: clamp(-88px, -3vw, -24px);
+        bottom: -8%;
+        width: min(46vw, 620px);
+        height: 108%;
+        object-fit: contain;
+        opacity: 0.7;
+      }
+
+      .hero-laptop {
+        position: absolute;
+        left: -30%;
+        top: 19%;
+        width: min(34vw, 460px);
+        opacity: 0.82;
+        filter: drop-shadow(0 18px 22px rgba(31, 33, 30, 0.12));
+        transform: rotate(-5deg);
+      }
+
+      .article-shell {
+        display: grid;
+        grid-template-columns: minmax(180px, 0.34fr) minmax(0, var(--measure)) minmax(90px, 0.34fr);
+        gap: clamp(28px, 5vw, 76px);
+        padding: clamp(70px, 9vw, 140px) clamp(22px, 5vw, 76px);
+      }
+
+      .article-index {
+        position: sticky;
+        top: 28px;
+        align-self: start;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+      }
+
+      .article-index p {
+        margin: 0 0 14px;
+        color: var(--accent);
+      }
+
+      .article-index ol {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: article-index;
+      }
+
+      .article-index li { counter-increment: article-index; }
+
+      .article-index a {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.25;
+        text-decoration: none;
+      }
+
+      .article-index a::before {
+        content: "0" counter(article-index);
+        color: var(--accent);
+        font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+        font-size: 10px;
+        padding-top: 2px;
+      }
+
+      .article-index a:hover { color: var(--ink); }
+
+      .article-body { min-width: 0; }
+
+      .standfirst {
+        margin: 0 0 76px;
+        font-family: "Acid Grotesk", "Inter", sans-serif;
+        font-size: clamp(28px, 3vw, 42px);
+        line-height: 1.14;
+        letter-spacing: -0.025em;
+      }
+
+      .article-section {
+        scroll-margin-top: 28px;
+        padding: 0 0 78px;
+      }
+
+      .section-number {
+        display: block;
+        margin-bottom: 18px;
+        color: var(--accent);
+      }
+
+      h2 {
+        margin: 0 0 26px;
+        font-size: clamp(42px, 5.4vw, 72px);
+        line-height: 0.98;
+      }
+
+      .article-body p,
+      .article-body li {
+        font-size: clamp(17px, 1.35vw, 20px);
+        line-height: 1.68;
+      }
+
+      .article-body p { margin: 0 0 24px; }
+      .article-body strong { font-weight: 650; }
+
+      .article-body a {
+        text-decoration-color: var(--accent);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 4px;
+      }
+
+      .pipeline {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 34px 0 42px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .pipeline-step {
+        position: relative;
+        min-height: 134px;
+        padding: 20px 18px;
+        border-right: 1px solid var(--line);
+      }
+
+      .pipeline-step:last-child { border-right: 0; }
+
+      .pipeline-step strong {
+        display: block;
+        margin-bottom: 28px;
+        color: var(--accent);
+      }
+
+      .pipeline-step span {
+        display: block;
+        font-family: "Acid Grotesk", "Inter", sans-serif;
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .technical-note {
+        margin: 36px 0;
+        padding: 24px 26px;
+        border-left: 3px solid var(--accent);
+        background: rgba(31, 33, 30, 0.035);
+      }
+
+      .technical-note p:last-child { margin-bottom: 0; }
+
+      .note-label {
+        margin-bottom: 10px !important;
+        color: var(--accent);
+        font: 700 10px/1.2 ui-monospace, "SFMono-Regular", Consolas, monospace !important;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .pull-quote {
+        margin: 6px 0 76px;
+        padding: 42px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        color: var(--accent);
+        font-size: clamp(40px, 5vw, 68px);
+        line-height: 0.98;
+      }
+
+      .lesson-list {
+        margin: 32px 0 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: lesson;
+        border-top: 1px solid var(--line);
+      }
+
+      .lesson-list li {
+        counter-increment: lesson;
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 14px;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .lesson-list li::before {
+        content: "0" counter(lesson);
+        color: var(--accent);
+        font: 700 11px/1.7 ui-monospace, "SFMono-Regular", Consolas, monospace;
+      }
+
+      .article-footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        padding: clamp(36px, 5vw, 72px) clamp(22px, 5vw, 76px);
+        border-top: 1px solid var(--line);
+      }
+
+      .article-footer p { margin: 0; }
+      .footer-label { margin-bottom: 12px !important; color: var(--accent); }
+
+      .footer-title {
+        font-family: "Acid Grotesk", "Inter", sans-serif;
+        font-size: clamp(32px, 4vw, 58px);
+        line-height: 1;
+        letter-spacing: -0.03em;
+      }
+
+      .back-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 12px 16px;
+        border: 1px solid var(--ink);
+        color: var(--ink);
+        font: 700 10px/1 ui-monospace, "SFMono-Regular", Consolas, monospace;
+        letter-spacing: 0.12em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .back-button:hover { border-color: var(--accent); color: var(--accent); }
+
+      @media (max-width: 980px) {
+        .article-hero { grid-template-columns: minmax(0, 1fr) minmax(220px, 0.52fr); }
+        .article-shell { grid-template-columns: minmax(0, var(--measure)); justify-content: center; }
+        .article-index { display: none; }
+        .article-spacer { display: none; }
+      }
+
+      @media (max-width: 720px) {
+        .site-nav { min-height: 64px; padding-block: 14px; }
+        .brand-name { display: none; }
+
+        .article-hero {
+          display: block;
+          min-height: 760px;
+        }
+
+        .hero-copy {
+          position: relative;
+          z-index: 2;
+          padding-top: 350px;
+        }
+
+        .hero-art {
+          position: absolute;
+          inset: 0;
+          min-height: 0;
+        }
+
+        .hero-person {
+          right: -16vw;
+          bottom: 20%;
+          width: 78vw;
+          height: 80%;
+          opacity: 0.43;
+        }
+
+        .hero-laptop {
+          left: -5vw;
+          top: 7%;
+          width: 54vw;
+          opacity: 0.78;
+        }
+
+        h1 { font-size: clamp(64px, 19vw, 98px); }
+        .dek { margin-top: 26px; }
+        .article-shell { padding-top: 72px; }
+
+        .pipeline { grid-template-columns: 1fr 1fr; }
+        .pipeline-step:nth-child(2) { border-right: 0; }
+        .pipeline-step:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+
+        .article-footer { align-items: flex-start; flex-direction: column; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .home-link::before { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#article">Skip to article</a>
+
+    <header class="site-nav">
+      <a class="brand" href="../../" aria-label="Daniel Welsh home">
+        <span class="brand-mark" aria-hidden="true">DW</span>
+        <span class="brand-name">Daniel Welsh · Routiq</span>
+      </a>
+      <a class="home-link nav-label" href="../../">Back home</a>
+    </header>
+
+    <main id="article">
+      <header class="article-hero">
+        <div class="hero-copy">
+          <p class="meta">
+            <span>Build note 001</span>
+            <span><time datetime="2026-08-21">21 Aug 2026</time></span>
+            <span>8 min read</span>
+          </p>
+          <h1>How we made this website walk</h1>
+          <p class="dek">A portrait became an ASCII character, Higgsfield taught that character to walk, and the resulting video became sixty new text drawings.</p>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <img
+            class="hero-person"
+            src="../../site-assets/higgsfield-b2-ascii-walk-with-hat/frame-012.svg"
+            alt=""
+          />
+          <img
+            class="hero-laptop"
+            src="../../site-assets/higgsfield-laptop-ascii/frame-032.svg"
+            alt=""
+          />
+        </div>
+      </header>
+
+      <div class="article-shell">
+        <nav class="article-index" aria-label="On this page">
+          <p class="nav-label">On this page</p>
+          <ol>
+            <li><a href="#portrait">The base portrait</a></li>
+            <li><a href="#motion">Five seconds of motion</a></li>
+            <li><a href="#frames">Sixty separate drawings</a></li>
+            <li><a href="#ascii">Making the ASCII readable</a></li>
+            <li><a href="#laptop">A second loop</a></li>
+            <li><a href="#browser">Putting it in the browser</a></li>
+            <li><a href="#lessons">What I learned</a></li>
+          </ol>
+        </nav>
+
+        <article class="article-body">
+          <p class="standfirst">The homepage looks simple: a man walking, a laptop turning, a little red shimmer when the cursor gets close. The route to that simplicity was not simple at all.</p>
+
+          <section class="article-section" id="portrait">
+            <span class="section-number">01 · The source</span>
+            <h2>First, I had to make a version of me worth animating.</h2>
+            <p>I started with a photograph and used image generation to push it away from a literal portrait. The direction was somewhere between an editorial ink drawing, a game character and a surf-and-skate illustration: oversized black T-shirt, very long baggy jorts, striped socks, plain black shoes, no forced smile.</p>
+            <p>That sounds like a prompt. It was actually a long sequence of decisions. The early versions were too photographic, too cartoonish, too cheerful, too crowded or just anatomically strange. A sleeve would swallow an arm. Both shoes would look like the same foot. The shorts would turn into a dark column with no gap between the legs.</p>
+            <p>The AI made material quickly, but it did not make the art direction for me. I still had to say what felt wrong, compare versions, lock the parts that worked and stop changing them once the character felt like the same person.</p>
+            <p>Before it moved, I converted the approved illustration into the first static B2 ASCII character. That locked the printed texture, the tone and the important empty spaces. This ASCII still—not the original photograph—became the input to Higgsfield.</p>
+          </section>
+
+          <blockquote class="pull-quote">The tools accelerated the making. They did not remove the taste.</blockquote>
+
+          <section class="article-section" id="motion">
+            <span class="section-number">02 · Higgsfield</span>
+            <h2>Then the still image needed a believable walk.</h2>
+            <p>I used Higgsfield’s image-to-video workflow to turn the approved ASCII character treatment into a five-second walking sequence. The useful word there is <em>sequence</em>, not animation. A generated clip can look impressive when played once and still be completely wrong for a loop.</p>
+            <p>The first attempts looked like dancing. The feet crossed in front of each other, the hips swung too far and the body changed shape between steps. Even a good-looking final frame was useless if it could not hand cleanly back to the first frame.</p>
+            <p>So the direction became deliberately boring: a natural walking pace, restrained arms, a stable torso, the same clothes and proportions, no camera move and no dramatic turn. The job was not to make a cinematic clip. It was to make five seconds that could disappear into a website.</p>
+
+            <div class="technical-note">
+              <p class="note-label">Loop rule</p>
+              <p>A seamless loop is judged at the join. If the last pose and first pose disagree, the eye sees a reset instead of continuous motion.</p>
+            </div>
+          </section>
+
+          <section class="article-section" id="frames">
+            <span class="section-number">03 · The frame set</span>
+            <h2>Five seconds became sixty images.</h2>
+            <p>I extracted the Higgsfield result at 12 frames per second. Five seconds at 12fps gives exactly 60 frames: enough temporal detail for a walk to feel continuous, but restrained enough to keep the static site manageable.</p>
+
+            <div class="pipeline" role="img" aria-label="Generated character to static B2 ASCII treatment to Higgsfield video to sixty new ASCII SVG frames">
+              <div class="pipeline-step"><strong>01</strong><span>Character</span></div>
+              <div class="pipeline-step"><strong>02 · B2</strong><span>ASCII still</span></div>
+              <div class="pipeline-step"><strong>03 · 5 sec</strong><span>Higgsfield</span></div>
+              <div class="pipeline-step"><strong>04 · 12 fps</strong><span>60 SVGs</span></div>
+            </div>
+
+            <p>Each extracted frame was cropped to the same canvas before conversion. This was important. If every frame found its own crop, the character appeared to wobble around the page even when the movement itself was fine. A fixed coordinate system made the body move while the composition stayed still.</p>
+            <p>The browser does not play a video for the character. It advances through sixty individual SVG files in chronological order. That gave me a clean, transparent result and let every visible mark remain a real ASCII glyph.</p>
+          </section>
+
+          <section class="article-section" id="ascii">
+            <span class="section-number">04 · Chafa</span>
+            <h2>The hardest part was not the characters. It was the gaps.</h2>
+            <p>Chafa converted each raster frame into a high-detail character field. I used a fixed 180-column treatment so the density remained consistent across the sequence. More detail was not automatically better: too many dark characters made the shirt, arms and jorts merge into one slab.</p>
+            <p>The breakthrough was preserving <strong>true negative space</strong>. The area between an arm and the shirt has to be empty. So does the gap between the legs. Early conversions treated those areas like pale texture, which made the figure look cut in half or glued together. At one point I temporarily filled the intended empty areas with dots simply to prove where the mask was failing.</p>
+            <p>Once the crop, brightness threshold and gaps were stable, the ASCII started reading as a person from a distance. That is the real test. A technically accurate field of symbols is not useful if the silhouette disappears at website scale.</p>
+
+            <div class="technical-note">
+              <p class="note-label">The conversion target</p>
+              <p>Not maximum fidelity. A clear silhouette, stable clothes, readable limbs and enough local texture to feel printed rather than pixelated.</p>
+            </div>
+          </section>
+
+          <section class="article-section" id="laptop">
+            <span class="section-number">05 · The second object</span>
+            <h2>The laptop had its own loop.</h2>
+            <p>The floating laptop was built separately because it needed different movement and different timing. It opens, closes and turns more slowly than the walking figure. Trying to bake both objects into one video would have made their scale, placement and loop timing impossible to tune independently.</p>
+            <p>I ran the laptop through a related pipeline: a controlled green-screen source, a short motion clip, 60 extracted frames and the same Chafa glyph language. Its separate 120-column conversion was tuned for the chroma mask, transparent gaps and lighter display rather than reusing the character settings.</p>
+            <p>On the page it lives in its own layer and its 60 frames play over a slower 7.5-second cycle. I can move it to the upper left, change its size or slow it down without touching the walk.</p>
+            <p>Its screen also needed a lighter internal value. Without that contrast, an open laptop read as a dark wedge. This was a small tonal adjustment, but it made the object legible immediately.</p>
+          </section>
+
+          <section class="article-section" id="browser">
+            <span class="section-number">06 · The website</span>
+            <h2>The final build is just static HTML.</h2>
+            <p>The page is hosted on GitHub Pages. There is no animation framework and no server rendering. HTML provides the layers, CSS positions and tones them, and a small amount of JavaScript swaps the active frame on a shared timeline.</p>
+            <p>The red cursor shimmer uses a second copy of each active SVG. CSS colours that copy Routiq red and reveals it with a soft radial mask centred on the pointer. The ordinary grey layer is masked in the opposite direction, so the colour feels like it travels through the characters rather than sitting on top as a hard spotlight.</p>
+            <p>Desktop and mobile use the same art, but not the same composition. On a phone the type, figure and laptop have less room to negotiate, so their size, opacity and coordinates change. The text always wins. Decorative motion can sit behind it; it cannot make the headline hard to read.</p>
+            <p>The page also respects <code>prefers-reduced-motion</code>, exposes a pause control and keeps the animated SVGs out of the accessibility tree. The visual has a useful description once; a screen reader does not need to announce sixty near-identical frames.</p>
+          </section>
+
+          <section class="article-section" id="lessons">
+            <span class="section-number">07 · What held up</span>
+            <h2>What I would do again.</h2>
+            <ol class="lesson-list">
+              <li><span><strong>Lock the art before animating it.</strong> Every unresolved detail becomes 60 unresolved details after frame extraction.</span></li>
+              <li><span><strong>Design the loop, not the clip.</strong> A great five seconds can still make a terrible repeating background.</span></li>
+              <li><span><strong>Protect the negative space.</strong> In ASCII, the empty cells describe anatomy as much as the printed ones.</span></li>
+              <li><span><strong>Give objects separate timelines.</strong> The figure, laptop and typewriter can then change without destabilising each other.</span></li>
+              <li><span><strong>Test at the actual size.</strong> A beautiful full-screen conversion can disappear when reduced to a pale background figure.</span></li>
+              <li><span><strong>Keep the delivery boring.</strong> Static files, relative paths and a small script made the result easy to host and hard to break.</span></li>
+            </ol>
+          </section>
+
+          <p class="standfirst">The finished page is not one clever prompt. It is a chain of ordinary, inspectable steps—with judgement between every one of them.</p>
+        </article>
+
+        <div class="article-spacer" aria-hidden="true"></div>
+      </div>
+    </main>
+
+    <footer class="article-footer">
+      <div>
+        <p class="footer-label">Daniel Welsh · Build note 001</p>
+        <p class="footer-title">Made, then explained.</p>
+      </div>
+      <a class="back-button" href="../../">Back to the homepage</a>
+    </footer>
+  </body>
+</html>
