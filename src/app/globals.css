@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* The palette is the hero's, lifted verbatim. Paper ground, ink text, one
+   red accent that never becomes a wall. Everything on this site answers to
+   these four values. */
+:root {
+  --paper: #f3f0e9;
+  --ink: #1f211e;
+  --muted: #6f716a;
+  --accent: #a43e35;
+
+  /* Derived. Rules and washes, so nothing hardcodes an rgba by hand. */
+  --rule: rgba(31, 33, 30, 0.18);
+  --rule-soft: rgba(31, 33, 30, 0.11);
+  --paper-deep: #eae6dd;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-display: "Acid Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mark: "Raptor V3", "Acid Grotesk", sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+@font-face {
+  font-family: "Acid Grotesk";
+  src: url("/fonts/acid-grotesk-light.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Light.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+/* Raptor is the mark and the accents, not the headlines. Decided
+   2026-08-21 — the hero's Acid Light leads and Raptor keeps the DW. */
+@font-face {
+  font-family: "Raptor V3";
+  src: url("/fonts/RaptorV3-Black.otf") format("opentype");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--paper);
+}
+
+body {
+  overflow-x: hidden;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The one display rule. Thin, wide, tight — the hero's h1 generalised so a
+   section head three levels down still reads as the same voice. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+}
+
+/* Mono labels. Small, uppercase, wide — the counterweight that stops the
+   thin display type floating away. */
+.label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mark {
+  font-family: var(--font-mark);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+::selection { background: var(--accent); color: var(--paper); }
+
+a { color: inherit; }
+
+/* Paper grain. One tile, multiplied, so the ground never reads as flat
+   #f3f0e9 on a big screen. */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise { animation: none; }
+}
