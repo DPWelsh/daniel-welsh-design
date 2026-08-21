@@ -1,0 +1,1574 @@
+{
+  "generatedAt": "2026-08-21T04:05:09.523Z",
+  "source": "site-assets/billie-higgsfield-walk-tail-up.mp4",
+  "sourceSha256": "78c3edc75a02a1ff3eaed20e6c9a5916066ec5692755cee4f239e72297a38987",
+  "engine": "Chafa version 1.18.2",
+  "ffmpeg": "ffmpeg version 8.0.1 Copyright (c) 2000-2025 the FFmpeg developers",
+  "treatment": "Daniel B2 high detail / Kintamani tail-up / fixed levels / true blank green-key background",
+  "sourceFrameRate": 24,
+  "sourceFrameCount": 121,
+  "sourceFrameIndices": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28,
+    30,
+    32,
+    34,
+    36,
+    38,
+    40,
+    42,
+    44,
+    46,
+    48,
+    50,
+    52,
+    54,
+    56,
+    58,
+    60,
+    62,
+    64,
+    66,
+    68,
+    70,
+    72,
+    74,
+    76,
+    78,
+    80,
+    82,
+    84,
+    86,
+    88,
+    90,
+    92,
+    94,
+    96,
+    98,
+    100,
+    102,
+    104,
+    106,
+    108,
+    110,
+    112,
+    114,
+    116,
+    118
+  ],
+  "frameRate": 12,
+  "frameCount": 60,
+  "frameDurationMs": 83.33333333333333,
+  "durationMs": 5000,
+  "columns": 128,
+  "rows": 76,
+  "cell": {
+    "width": 6.2,
+    "height": 10.8,
+    "fontSize": 10
+  },
+  "viewBox": {
+    "width": 793.6,
+    "height": 820.8
+  },
+  "aspectRatio": 0.966862,
+  "crop": {
+    "x": 36,
+    "y": 288,
+    "width": 672,
+    "height": 696
+  },
+  "observedSubjectUnion": {
+    "left": 57,
+    "top": 314,
+    "right": 689,
+    "bottom": 959
+  },
+  "stableRegistration": true,
+  "chromaKey": {
+    "color": "0x00ff18",
+    "similarity": 0.28,
+    "blend": 0.04
+  },
+  "ffmpegFilterComplex": "[0:v]select='lte(n,118)*not(mod(n,2))',setpts=N/(12*TB),format=yuv444p,chromakey=0x00ff18:0.28:0.04,format=yuva444p,crop=672:696:36:288,hqdn3d=1.0:1.0:2.0:2.0[fg];color=c=white:s=672x696:r=12:d=5,format=yuva444p[bg];[bg][fg]overlay=shortest=1:format=auto,format=rgb24,format=gray,curves=all='0/0 0.18/0.10 0.70/0.82 0.90/0.985 1/1'[out]",
+  "chafa": {
+    "ramp": " .,:;+=xX$#@",
+    "fontRatio": "31/54",
+    "dither": "none",
+    "preprocess": "off",
+    "work": 9,
+    "threshold": 0.05
+  },
+  "qa": {
+    "exactSourceIndices": true,
+    "fixedCropAcrossFrames": true,
+    "oneViewBoxAcrossFrames": true,
+    "trueBlankBackground": true,
+    "contactSheet": "contact-sheet.png",
+    "nonSpaceBounds": [
+      {
+        "left": 3,
+        "top": 4,
+        "right": 122,
+        "bottom": 71,
+        "nonSpaceCells": 1661
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 121,
+        "bottom": 70,
+        "nonSpaceCells": 1685
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1695
+      },
+      {
+        "left": 2,
+        "top": 3,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1658
+      },
+      {
+        "left": 2,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1545
+      },
+      {
+        "left": 2,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1573
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1634
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1560
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 121,
+        "bottom": 70,
+        "nonSpaceCells": 1596
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 121,
+        "bottom": 71,
+        "nonSpaceCells": 1607
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 121,
+        "bottom": 72,
+        "nonSpaceCells": 1658
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 120,
+        "bottom": 73,
+        "nonSpaceCells": 1576
+      },
+      {
+        "left": 3,
+        "top": 2,
+        "right": 119,
+        "bottom": 72,
+        "nonSpaceCells": 1658
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1710
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1697
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 118,
+        "bottom": 71,
+        "nonSpaceCells": 1738
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1698
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1723
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1697
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1630
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1547
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1623
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1559
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 120,
+        "bottom": 71,
+        "nonSpaceCells": 1622
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 121,
+        "bottom": 73,
+        "nonSpaceCells": 1648
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 73,
+        "nonSpaceCells": 1570
+      },
+      {
+        "left": 3,
+        "top": 2,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1685
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 117,
+        "bottom": 72,
+        "nonSpaceCells": 1707
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1759
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1734
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1753
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1698
+      },
+      {
+        "left": 3,
+        "top": 2,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1582
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1609
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1577
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1616
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 121,
+        "bottom": 72,
+        "nonSpaceCells": 1641
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 120,
+        "bottom": 73,
+        "nonSpaceCells": 1639
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 72,
+        "nonSpaceCells": 1592
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1626
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1717
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 118,
+        "bottom": 71,
+        "nonSpaceCells": 1729
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1725
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1745
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1671
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1523
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1606
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1611
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 121,
+        "bottom": 72,
+        "nonSpaceCells": 1625
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 120,
+        "bottom": 73,
+        "nonSpaceCells": 1646
+      },
+      {
+        "left": 3,
+        "top": 2,
+        "right": 119,
+        "bottom": 72,
+        "nonSpaceCells": 1625
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1648
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1741
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1723
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1754
+      },
+      {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1706
+      },
+      {
+        "left": 2,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1542
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 122,
+        "bottom": 71,
+        "nonSpaceCells": 1731
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 122,
+        "bottom": 71,
+        "nonSpaceCells": 1725
+      },
+      {
+        "left": 3,
+        "top": 4,
+        "right": 122,
+        "bottom": 71,
+        "nonSpaceCells": 1731
+      }
+    ]
+  },
+  "loopParity": {
+    "firstSourceFrameIndex": 0,
+    "lastEmittedSourceFrameIndex": 118,
+    "matchingUnemittedEndpointFrameIndex": 120,
+    "sourceEndpointNearStart": true,
+    "sourceEndpointSimilaritySSIM": 0.94724,
+    "similarityMethod": "FFmpeg SSIM on full RGB source frames 0 and 120"
+  },
+  "frames": [
+    {
+      "index": 0,
+      "sourceFrameIndex": 0,
+      "outputTimeSeconds": 0,
+      "sourceTimeSeconds": 0,
+      "txt": "frame-000.txt",
+      "svg": "frame-000.svg",
+      "txtSha256": "ae79ca747b71f181475e49ae0c529a6f88fd6cfdbb8e45d22fea7c43f91cf82a",
+      "svgSha256": "490257ddaea3b3fa744b3b4cadb34af790a999b64a3a36375cdffe3e7e7df3cc",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 122,
+        "bottom": 71,
+        "nonSpaceCells": 1661
+      }
+    },
+    {
+      "index": 1,
+      "sourceFrameIndex": 2,
+      "outputTimeSeconds": 0.083333,
+      "sourceTimeSeconds": 0.083333,
+      "txt": "frame-001.txt",
+      "svg": "frame-001.svg",
+      "txtSha256": "bab92ea27222bef517d49298be6076df54376fa25c521e90258561dac5c5e680",
+      "svgSha256": "05857b08eae16a6945cfdbb484d7cdd31997f3697ae3a965ea715919f1ee2254",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 121,
+        "bottom": 70,
+        "nonSpaceCells": 1685
+      }
+    },
+    {
+      "index": 2,
+      "sourceFrameIndex": 4,
+      "outputTimeSeconds": 0.166667,
+      "sourceTimeSeconds": 0.166667,
+      "txt": "frame-002.txt",
+      "svg": "frame-002.svg",
+      "txtSha256": "2380246c0f93964ebb8297a394777ae8b184b6fee67f4a4bb8e12ae2d646de53",
+      "svgSha256": "c45894a93793567a13c48b4d60a57689f647a9eb4778a36cf677138866d60c52",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1695
+      }
+    },
+    {
+      "index": 3,
+      "sourceFrameIndex": 6,
+      "outputTimeSeconds": 0.25,
+      "sourceTimeSeconds": 0.25,
+      "txt": "frame-003.txt",
+      "svg": "frame-003.svg",
+      "txtSha256": "c3f02864acd2f51a8dfe2c3fb6da11143329e1f1b355521f16f0a04bcc72d81d",
+      "svgSha256": "261dd57af62e8603a8054d692144bcadabff40d4bea71b950a51992d41f35111",
+      "bounds": {
+        "left": 2,
+        "top": 3,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1658
+      }
+    },
+    {
+      "index": 4,
+      "sourceFrameIndex": 8,
+      "outputTimeSeconds": 0.333333,
+      "sourceTimeSeconds": 0.333333,
+      "txt": "frame-004.txt",
+      "svg": "frame-004.svg",
+      "txtSha256": "e1960b320107ff4336c7055b709f9ee2412847f4d04d0c20e2a2fc71de73c1c6",
+      "svgSha256": "16363ba6409d487180d15ce7faf320d7fb8e3ee2192b9b74b17cf6a56a181741",
+      "bounds": {
+        "left": 2,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1545
+      }
+    },
+    {
+      "index": 5,
+      "sourceFrameIndex": 10,
+      "outputTimeSeconds": 0.416667,
+      "sourceTimeSeconds": 0.416667,
+      "txt": "frame-005.txt",
+      "svg": "frame-005.svg",
+      "txtSha256": "a32b91c2ef20a9943ad52402c908d22c6baf4b108be2481c1bd01900fd0eea59",
+      "svgSha256": "2f62ee3ef3d875695f786c6f8f7b5ff16fff4c45d63e66628cf3f11c4bafca08",
+      "bounds": {
+        "left": 2,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1573
+      }
+    },
+    {
+      "index": 6,
+      "sourceFrameIndex": 12,
+      "outputTimeSeconds": 0.5,
+      "sourceTimeSeconds": 0.5,
+      "txt": "frame-006.txt",
+      "svg": "frame-006.svg",
+      "txtSha256": "e35219ec17eaa9564befcbd63db30b139eaf04309f7a2f77b9eaa4dc17a5033f",
+      "svgSha256": "ecdfbf96de860fcb9cecc88194775d1c77d9d18a038f505bc1cfa0b6e9579722",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1634
+      }
+    },
+    {
+      "index": 7,
+      "sourceFrameIndex": 14,
+      "outputTimeSeconds": 0.583333,
+      "sourceTimeSeconds": 0.583333,
+      "txt": "frame-007.txt",
+      "svg": "frame-007.svg",
+      "txtSha256": "244454d677eeedf2625ac25d4a19090aa3e4d5ea616c18009514ce14385e08be",
+      "svgSha256": "0d528fbd2420370d6d70e664d691206af18795fe36c286c3d05e0680b14b86cb",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1560
+      }
+    },
+    {
+      "index": 8,
+      "sourceFrameIndex": 16,
+      "outputTimeSeconds": 0.666667,
+      "sourceTimeSeconds": 0.666667,
+      "txt": "frame-008.txt",
+      "svg": "frame-008.svg",
+      "txtSha256": "3809b37082ffd140464dc12902167043b2f8211153f2403f7850fa4330ed6ad1",
+      "svgSha256": "c03662a7b8ffa23f32f8c68558d72b51f507db35f127bf745a322bb5f2bc6714",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 121,
+        "bottom": 70,
+        "nonSpaceCells": 1596
+      }
+    },
+    {
+      "index": 9,
+      "sourceFrameIndex": 18,
+      "outputTimeSeconds": 0.75,
+      "sourceTimeSeconds": 0.75,
+      "txt": "frame-009.txt",
+      "svg": "frame-009.svg",
+      "txtSha256": "79a318bc8aed9936e7d33b5af2428cd729e3bfcb2a354c914557a649b2388578",
+      "svgSha256": "3670294feb1de94ca395d9e1b10372867bf4debde1f89531d34a0c4199616b6e",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 121,
+        "bottom": 71,
+        "nonSpaceCells": 1607
+      }
+    },
+    {
+      "index": 10,
+      "sourceFrameIndex": 20,
+      "outputTimeSeconds": 0.833333,
+      "sourceTimeSeconds": 0.833333,
+      "txt": "frame-010.txt",
+      "svg": "frame-010.svg",
+      "txtSha256": "254f74a6e11c09f33cafea7efbbc7c8afaa912a4211976e7b669788e92a075cc",
+      "svgSha256": "4f7b62782c93507d823414b14433c649dae0a6cd5d9aec764aeac737559070e3",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 121,
+        "bottom": 72,
+        "nonSpaceCells": 1658
+      }
+    },
+    {
+      "index": 11,
+      "sourceFrameIndex": 22,
+      "outputTimeSeconds": 0.916667,
+      "sourceTimeSeconds": 0.916667,
+      "txt": "frame-011.txt",
+      "svg": "frame-011.svg",
+      "txtSha256": "eec137ed66100cac986ad118e47775c19c3459dc4489908b1133acb58cb42569",
+      "svgSha256": "cc983f587767b33dd1adba04e0dd5c91b7a13baf0f8c895e08c13c4fae36948b",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 120,
+        "bottom": 73,
+        "nonSpaceCells": 1576
+      }
+    },
+    {
+      "index": 12,
+      "sourceFrameIndex": 24,
+      "outputTimeSeconds": 1,
+      "sourceTimeSeconds": 1,
+      "txt": "frame-012.txt",
+      "svg": "frame-012.svg",
+      "txtSha256": "d6f6805531cda8d3dd8102b28106cc0ce7095b46ab0341f29c63cf1330decd0c",
+      "svgSha256": "dc28cf321a6677249f2b7180081761666ed61e0c2bc86945deb59cd640d83909",
+      "bounds": {
+        "left": 3,
+        "top": 2,
+        "right": 119,
+        "bottom": 72,
+        "nonSpaceCells": 1658
+      }
+    },
+    {
+      "index": 13,
+      "sourceFrameIndex": 26,
+      "outputTimeSeconds": 1.083333,
+      "sourceTimeSeconds": 1.083333,
+      "txt": "frame-013.txt",
+      "svg": "frame-013.svg",
+      "txtSha256": "0557e130bbe3a50bec85ef3bc14ae33d8730bddf4cbc124f9e8abc2327541269",
+      "svgSha256": "d9a2cb2516e93e8ad7b0a1a40c02d1356781a1e1599e60f9b88d424f6af7a0c1",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1710
+      }
+    },
+    {
+      "index": 14,
+      "sourceFrameIndex": 28,
+      "outputTimeSeconds": 1.166667,
+      "sourceTimeSeconds": 1.166667,
+      "txt": "frame-014.txt",
+      "svg": "frame-014.svg",
+      "txtSha256": "15aa87ba71e6dcb6ca9994ba958f4a0d6e802d6541bbc249f417b2dbd7603719",
+      "svgSha256": "f4a756777b6a3f27f7c1238933696734cbcb8b6da9aecd71606fe99db993b484",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1697
+      }
+    },
+    {
+      "index": 15,
+      "sourceFrameIndex": 30,
+      "outputTimeSeconds": 1.25,
+      "sourceTimeSeconds": 1.25,
+      "txt": "frame-015.txt",
+      "svg": "frame-015.svg",
+      "txtSha256": "49194b2e68d95ec5172d0fa7968fe6e50a897d1fe4bc4cd2497f5863adb4c86a",
+      "svgSha256": "2be2d84951403cc780e91875ba68a3948bcf8506b895bafef243abb48b8c92a8",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 118,
+        "bottom": 71,
+        "nonSpaceCells": 1738
+      }
+    },
+    {
+      "index": 16,
+      "sourceFrameIndex": 32,
+      "outputTimeSeconds": 1.333333,
+      "sourceTimeSeconds": 1.333333,
+      "txt": "frame-016.txt",
+      "svg": "frame-016.svg",
+      "txtSha256": "f81efff10b2fb207059883929aeedfa3fab3e768720f4b9442ca0c561230cabb",
+      "svgSha256": "b168447a4fd6a3d47c6f1140d1f5757d11fc6e347e89b89a41a36a1fb6489fcd",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1698
+      }
+    },
+    {
+      "index": 17,
+      "sourceFrameIndex": 34,
+      "outputTimeSeconds": 1.416667,
+      "sourceTimeSeconds": 1.416667,
+      "txt": "frame-017.txt",
+      "svg": "frame-017.svg",
+      "txtSha256": "7f0f4d8839fd404975a8cdb7b4e4b857af14fecb2d83efc6e889b871595a703a",
+      "svgSha256": "4c7710f3b7866477eb60d989eb138855fcdc32dcc697e1527b0ddb327a99dd7a",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1723
+      }
+    },
+    {
+      "index": 18,
+      "sourceFrameIndex": 36,
+      "outputTimeSeconds": 1.5,
+      "sourceTimeSeconds": 1.5,
+      "txt": "frame-018.txt",
+      "svg": "frame-018.svg",
+      "txtSha256": "092f47efc9a8063fe21e37c0f6a7d28dd3c9d3b522097ac742dd4cc2e501c4f0",
+      "svgSha256": "e44d9824ad4919d56307604637a2d0d447695acd494a16b7ca8b4b67db10e14c",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1697
+      }
+    },
+    {
+      "index": 19,
+      "sourceFrameIndex": 38,
+      "outputTimeSeconds": 1.583333,
+      "sourceTimeSeconds": 1.583333,
+      "txt": "frame-019.txt",
+      "svg": "frame-019.svg",
+      "txtSha256": "714aab648e3e4ca56a1e6bac9b5f8b3a4f2051d383b0b6b69eab91b09a1b1f9c",
+      "svgSha256": "ecff795367240bbaf2c089aa73e095f94f70ebbfa549abb6417ad0ae07de236e",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1630
+      }
+    },
+    {
+      "index": 20,
+      "sourceFrameIndex": 40,
+      "outputTimeSeconds": 1.666667,
+      "sourceTimeSeconds": 1.666667,
+      "txt": "frame-020.txt",
+      "svg": "frame-020.svg",
+      "txtSha256": "1151158f11ad0f5846b24f0261110fd797583c33e441d22420d03365d8d1f393",
+      "svgSha256": "d7a4133a21aef20423ef957805661dccf3337110d6e2ed84ee357c2e62cfef38",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1547
+      }
+    },
+    {
+      "index": 21,
+      "sourceFrameIndex": 42,
+      "outputTimeSeconds": 1.75,
+      "sourceTimeSeconds": 1.75,
+      "txt": "frame-021.txt",
+      "svg": "frame-021.svg",
+      "txtSha256": "38955f3e25b4a8567cc1aa8c825bf0e851132d1f601276ca2dc5824d9cc14ee7",
+      "svgSha256": "6ce12db52f845ddfc2784b30de8535a72a27893f383fc4e07ceb500bc6ffb1f8",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1623
+      }
+    },
+    {
+      "index": 22,
+      "sourceFrameIndex": 44,
+      "outputTimeSeconds": 1.833333,
+      "sourceTimeSeconds": 1.833333,
+      "txt": "frame-022.txt",
+      "svg": "frame-022.svg",
+      "txtSha256": "68ddca82be38d33b45dc06f0ba29f32e2aa6b6328dfdcedaf96bf744542d1c61",
+      "svgSha256": "3e53f7c41ac969fec1270b25fa20d451934ae775c0d77d5930abc4e1175fb6f4",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1559
+      }
+    },
+    {
+      "index": 23,
+      "sourceFrameIndex": 46,
+      "outputTimeSeconds": 1.916667,
+      "sourceTimeSeconds": 1.916667,
+      "txt": "frame-023.txt",
+      "svg": "frame-023.svg",
+      "txtSha256": "1cefc30856af336806c91002ee35d7b337325a8de96426e4eaf18bba2a3e5716",
+      "svgSha256": "44cd6212008c75e5e818d412627362c69438b9383c43b333eb03140a72ca0e9a",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 120,
+        "bottom": 71,
+        "nonSpaceCells": 1622
+      }
+    },
+    {
+      "index": 24,
+      "sourceFrameIndex": 48,
+      "outputTimeSeconds": 2,
+      "sourceTimeSeconds": 2,
+      "txt": "frame-024.txt",
+      "svg": "frame-024.svg",
+      "txtSha256": "98187499127b6b87ba081bd3646d1f007ce36f402cb0e21e44e8d438d482bbaf",
+      "svgSha256": "083984bc3c029399695d32ef46d7decdd695ab30e1e10bda1324df7694f3d7e9",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 121,
+        "bottom": 73,
+        "nonSpaceCells": 1648
+      }
+    },
+    {
+      "index": 25,
+      "sourceFrameIndex": 50,
+      "outputTimeSeconds": 2.083333,
+      "sourceTimeSeconds": 2.083333,
+      "txt": "frame-025.txt",
+      "svg": "frame-025.svg",
+      "txtSha256": "2792ab48816d17131ebb396aa084fe3a1aa8fee86094bd33263ef55eed23e14a",
+      "svgSha256": "7f1234cecba071f10bbb94831da3a0e50c1c07e8f1e253e9a46367ce1eeb76db",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 73,
+        "nonSpaceCells": 1570
+      }
+    },
+    {
+      "index": 26,
+      "sourceFrameIndex": 52,
+      "outputTimeSeconds": 2.166667,
+      "sourceTimeSeconds": 2.166667,
+      "txt": "frame-026.txt",
+      "svg": "frame-026.svg",
+      "txtSha256": "329a0d11bfe9e6a0772bd79a3210a993fcad6d4577e2d2e6226335ed5db60317",
+      "svgSha256": "1eac9ce3c752e28f07499b5d4cbacd7a0f5ee8f224814d8215fa6c9d41fa231f",
+      "bounds": {
+        "left": 3,
+        "top": 2,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1685
+      }
+    },
+    {
+      "index": 27,
+      "sourceFrameIndex": 54,
+      "outputTimeSeconds": 2.25,
+      "sourceTimeSeconds": 2.25,
+      "txt": "frame-027.txt",
+      "svg": "frame-027.svg",
+      "txtSha256": "e9504be33fb428a9cde16d3c0fdd138280f4142109006fbccbf2b3fd0dc0daa5",
+      "svgSha256": "2a6af6cd480bad5e15953901332df674be8acb1aa10dd5cfbf8fb8adcdedf412",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 117,
+        "bottom": 72,
+        "nonSpaceCells": 1707
+      }
+    },
+    {
+      "index": 28,
+      "sourceFrameIndex": 56,
+      "outputTimeSeconds": 2.333333,
+      "sourceTimeSeconds": 2.333333,
+      "txt": "frame-028.txt",
+      "svg": "frame-028.svg",
+      "txtSha256": "0d55cc6e1f7c98e1278aa60d9cedafc6070936b5277f382db9746f5773bc6a23",
+      "svgSha256": "b51dff76f271a6b0d439030d55b90e44d4184bac6b90f11bfda10b6fc9c76003",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1759
+      }
+    },
+    {
+      "index": 29,
+      "sourceFrameIndex": 58,
+      "outputTimeSeconds": 2.416667,
+      "sourceTimeSeconds": 2.416667,
+      "txt": "frame-029.txt",
+      "svg": "frame-029.svg",
+      "txtSha256": "99731d4a7bee9483833066f99fffbc4ef04c256e672c1b81d056f3791ff99bd8",
+      "svgSha256": "0922b885ee9639c680e775689b9ead264151e844db6a746d0398c19a298f514a",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1734
+      }
+    },
+    {
+      "index": 30,
+      "sourceFrameIndex": 60,
+      "outputTimeSeconds": 2.5,
+      "sourceTimeSeconds": 2.5,
+      "txt": "frame-030.txt",
+      "svg": "frame-030.svg",
+      "txtSha256": "dd9c2f6ad8dd62451ad2bfde793515c9ac5c10c8c4a8e0058008f89b567a7281",
+      "svgSha256": "9c32612703fe9baeb055016293b89489ba4e06a797c07b150f4bf148ced7636f",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1753
+      }
+    },
+    {
+      "index": 31,
+      "sourceFrameIndex": 62,
+      "outputTimeSeconds": 2.583333,
+      "sourceTimeSeconds": 2.583333,
+      "txt": "frame-031.txt",
+      "svg": "frame-031.svg",
+      "txtSha256": "3145acf224860547d7986a7acdac58979e540ae01d8709558e8685d6c7dbf774",
+      "svgSha256": "fe19dc70a3b063f9576583a61b3bde8e8eaceabfc3942167640b3ccdf08ecfb6",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1698
+      }
+    },
+    {
+      "index": 32,
+      "sourceFrameIndex": 64,
+      "outputTimeSeconds": 2.666667,
+      "sourceTimeSeconds": 2.666667,
+      "txt": "frame-032.txt",
+      "svg": "frame-032.svg",
+      "txtSha256": "0136ca826984b3ae2e7c6a95ac6c423c6500af379365116dd32ce527dac503eb",
+      "svgSha256": "2f4bc8562d62e4ff9cc40e9e6b0cb475d0919b5b65f6caf0e3dfb0a039de28be",
+      "bounds": {
+        "left": 3,
+        "top": 2,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1582
+      }
+    },
+    {
+      "index": 33,
+      "sourceFrameIndex": 66,
+      "outputTimeSeconds": 2.75,
+      "sourceTimeSeconds": 2.75,
+      "txt": "frame-033.txt",
+      "svg": "frame-033.svg",
+      "txtSha256": "41bda39f9a599ca9489fc99c4559023274360d134a8d4da56f8830139a2460cf",
+      "svgSha256": "6ee8572a48082b19ea56a450f825de9c305c84f033306ec47183dca5fcd968db",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1609
+      }
+    },
+    {
+      "index": 34,
+      "sourceFrameIndex": 68,
+      "outputTimeSeconds": 2.833333,
+      "sourceTimeSeconds": 2.833333,
+      "txt": "frame-034.txt",
+      "svg": "frame-034.svg",
+      "txtSha256": "0597d930a8ecec54beb3696b7d1dc045a29c8f6c25b3402509a29141246cb6b8",
+      "svgSha256": "f585d0d75993ce06b490a3eaaa5c78eaa8408310d0417c03be5af7edc6da9014",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1577
+      }
+    },
+    {
+      "index": 35,
+      "sourceFrameIndex": 70,
+      "outputTimeSeconds": 2.916667,
+      "sourceTimeSeconds": 2.916667,
+      "txt": "frame-035.txt",
+      "svg": "frame-035.svg",
+      "txtSha256": "49db8824866bd89fa174ed739f6126c848ee61f18d1c20b5fc9a6895321340f5",
+      "svgSha256": "790f0b0ab863388f861b74a5457ac0847ceef3d9740408a0c40708bba5f1a585",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1616
+      }
+    },
+    {
+      "index": 36,
+      "sourceFrameIndex": 72,
+      "outputTimeSeconds": 3,
+      "sourceTimeSeconds": 3,
+      "txt": "frame-036.txt",
+      "svg": "frame-036.svg",
+      "txtSha256": "d2a5149ec867bb48704586d0caebaea3bede1c8c9f6f2c4fd0f0d28ed59b40f4",
+      "svgSha256": "cbaf9b4b93d928c53f4a30342427041dfff867cec448090efba44a5da72fa5d0",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 121,
+        "bottom": 72,
+        "nonSpaceCells": 1641
+      }
+    },
+    {
+      "index": 37,
+      "sourceFrameIndex": 74,
+      "outputTimeSeconds": 3.083333,
+      "sourceTimeSeconds": 3.083333,
+      "txt": "frame-037.txt",
+      "svg": "frame-037.svg",
+      "txtSha256": "bb6a26e0464846e843cfdc58d27ca5671805144fb0adb983e3912027ce990819",
+      "svgSha256": "afc2283737dac7427604e3649dc2a3ec8dce26166b329c4bb07961b91f71d84b",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 120,
+        "bottom": 73,
+        "nonSpaceCells": 1639
+      }
+    },
+    {
+      "index": 38,
+      "sourceFrameIndex": 76,
+      "outputTimeSeconds": 3.166667,
+      "sourceTimeSeconds": 3.166667,
+      "txt": "frame-038.txt",
+      "svg": "frame-038.svg",
+      "txtSha256": "75abf46c6aa7820f6802ab40ea2b1e5531e24408f196ccb0e8395710e755df36",
+      "svgSha256": "bee4c7d9501d23b986a379a30afdaff0e073495c27b65ded4773c2743b82f48c",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 72,
+        "nonSpaceCells": 1592
+      }
+    },
+    {
+      "index": 39,
+      "sourceFrameIndex": 78,
+      "outputTimeSeconds": 3.25,
+      "sourceTimeSeconds": 3.25,
+      "txt": "frame-039.txt",
+      "svg": "frame-039.svg",
+      "txtSha256": "bca35444b1a9b93768f8f5dde07a93cc637933f6f2a3f2bd5cbf120ddad76872",
+      "svgSha256": "268fccaeaf4a4330ed0ed8af8efbeb2680c9e95ff710e5ffea772709d2836c98",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1626
+      }
+    },
+    {
+      "index": 40,
+      "sourceFrameIndex": 80,
+      "outputTimeSeconds": 3.333333,
+      "sourceTimeSeconds": 3.333333,
+      "txt": "frame-040.txt",
+      "svg": "frame-040.svg",
+      "txtSha256": "ae63ea466834336d68364a15cb2efc2f989d3bce27c4527bcdf3500bcc0fcb8c",
+      "svgSha256": "2a2fb972670c53a9dd599929172a809d6e0fc0a98a18dd2c420708594f3efeb9",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1717
+      }
+    },
+    {
+      "index": 41,
+      "sourceFrameIndex": 82,
+      "outputTimeSeconds": 3.416667,
+      "sourceTimeSeconds": 3.416667,
+      "txt": "frame-041.txt",
+      "svg": "frame-041.svg",
+      "txtSha256": "192355b62f0628dfced7814c5fff3ee6bd36a9c776e3848909bfbba2cf94cacc",
+      "svgSha256": "b2a50976c64ec35466a6b8d848c0bbd43f9237d89c781a8ead4d5477c4304c8b",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 118,
+        "bottom": 71,
+        "nonSpaceCells": 1729
+      }
+    },
+    {
+      "index": 42,
+      "sourceFrameIndex": 84,
+      "outputTimeSeconds": 3.5,
+      "sourceTimeSeconds": 3.5,
+      "txt": "frame-042.txt",
+      "svg": "frame-042.svg",
+      "txtSha256": "4998e9e1e8cff6c37507c713d7a815c612d60dee930a0cf6e36e9151fcbae38b",
+      "svgSha256": "9a0823b5d9263eb24ff463cac0b6f54c6406453262442f49b0282941c7077e37",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1725
+      }
+    },
+    {
+      "index": 43,
+      "sourceFrameIndex": 86,
+      "outputTimeSeconds": 3.583333,
+      "sourceTimeSeconds": 3.583333,
+      "txt": "frame-043.txt",
+      "svg": "frame-043.svg",
+      "txtSha256": "3198aa6b1dc504a760cd2d43404c54af8af387a1beaefd499835519960f3a6d6",
+      "svgSha256": "fa59a8c416a109ee8ccff08415d686eb2cd217391011906ff821ff8c30c3ded9",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1745
+      }
+    },
+    {
+      "index": 44,
+      "sourceFrameIndex": 88,
+      "outputTimeSeconds": 3.666667,
+      "sourceTimeSeconds": 3.666667,
+      "txt": "frame-044.txt",
+      "svg": "frame-044.svg",
+      "txtSha256": "23976c014d0049fb74ce8244b8e49d302098a240781386595daaddd54ee1a4d0",
+      "svgSha256": "1369b59441b697ba131c103fd7a365bcbb78b6fe0f8f66271e8dbfb77a3eaf9d",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1671
+      }
+    },
+    {
+      "index": 45,
+      "sourceFrameIndex": 90,
+      "outputTimeSeconds": 3.75,
+      "sourceTimeSeconds": 3.75,
+      "txt": "frame-045.txt",
+      "svg": "frame-045.svg",
+      "txtSha256": "8fde7b07fdd3dda451dcaf2df90d758ccf08c031b0fb983e3ba01d157c0eac7f",
+      "svgSha256": "adfa00bfd209cb3b8e4fb73474d02914253eea0d91e06ecd2b1f86785d031a1b",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1523
+      }
+    },
+    {
+      "index": 46,
+      "sourceFrameIndex": 92,
+      "outputTimeSeconds": 3.833333,
+      "sourceTimeSeconds": 3.833333,
+      "txt": "frame-046.txt",
+      "svg": "frame-046.svg",
+      "txtSha256": "b818e05497b379d4f8304635e0311b2bd3f5d8904735c023bb0eb280a2be176a",
+      "svgSha256": "60ea481bc0a5344442203ddb61ffa3feb1c23172c2903c73a6a20fd59c26adf7",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 70,
+        "nonSpaceCells": 1606
+      }
+    },
+    {
+      "index": 47,
+      "sourceFrameIndex": 94,
+      "outputTimeSeconds": 3.916667,
+      "sourceTimeSeconds": 3.916667,
+      "txt": "frame-047.txt",
+      "svg": "frame-047.svg",
+      "txtSha256": "6c323eaaf312b30b2c369515fb36250f3736ab4ad80f6345be05327f02328f3f",
+      "svgSha256": "dd41dfa7a2679ebd03c64e4e34679c411b01cac125ed5dccd7594b75f1f4f858",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 120,
+        "bottom": 70,
+        "nonSpaceCells": 1611
+      }
+    },
+    {
+      "index": 48,
+      "sourceFrameIndex": 96,
+      "outputTimeSeconds": 4,
+      "sourceTimeSeconds": 4,
+      "txt": "frame-048.txt",
+      "svg": "frame-048.svg",
+      "txtSha256": "f535de3be3ef64475b80ff5fcef1db5c681cbeac18df05dc767585bc889060fa",
+      "svgSha256": "da13fed912902d32af58a3e22e38b9e0a804e6c7a4b540cd8f01a4196b5b3219",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 121,
+        "bottom": 72,
+        "nonSpaceCells": 1625
+      }
+    },
+    {
+      "index": 49,
+      "sourceFrameIndex": 98,
+      "outputTimeSeconds": 4.083333,
+      "sourceTimeSeconds": 4.083333,
+      "txt": "frame-049.txt",
+      "svg": "frame-049.svg",
+      "txtSha256": "c9f7278981f9b06fd09b1148a1efa38ee013aebc51abd80d78888a6bdaddedc0",
+      "svgSha256": "dce806b9e5730a558db279eba0566ffa1e742b5d2b165e3dc4bc8a02aa7df730",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 120,
+        "bottom": 73,
+        "nonSpaceCells": 1646
+      }
+    },
+    {
+      "index": 50,
+      "sourceFrameIndex": 100,
+      "outputTimeSeconds": 4.166667,
+      "sourceTimeSeconds": 4.166667,
+      "txt": "frame-050.txt",
+      "svg": "frame-050.svg",
+      "txtSha256": "2290cd929b45154626e1bfe98b15216e9ee2e2fb927b3adbe6425a44afc910f4",
+      "svgSha256": "22b9605061808b50cbc54f690fbb93793ae10bf5848b1df5d85660f21b08d0de",
+      "bounds": {
+        "left": 3,
+        "top": 2,
+        "right": 119,
+        "bottom": 72,
+        "nonSpaceCells": 1625
+      }
+    },
+    {
+      "index": 51,
+      "sourceFrameIndex": 102,
+      "outputTimeSeconds": 4.25,
+      "sourceTimeSeconds": 4.25,
+      "txt": "frame-051.txt",
+      "svg": "frame-051.svg",
+      "txtSha256": "0f0f8a1d1c6bdca4aa462aa94760baddb2f92cc65a98d73beb1d3e1bd25fba28",
+      "svgSha256": "ee13e9cb26241b251ef18879c8e56328fc7159405e3c6ae6dca16cad1e3af34e",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1648
+      }
+    },
+    {
+      "index": 52,
+      "sourceFrameIndex": 104,
+      "outputTimeSeconds": 4.333333,
+      "sourceTimeSeconds": 4.333333,
+      "txt": "frame-052.txt",
+      "svg": "frame-052.svg",
+      "txtSha256": "9673dbc7e1d024d760bb3e64bb62c4ebf65a30e87c4fe49aafecd1606f2c7070",
+      "svgSha256": "3e072b456bdd10cbbdc1a1b72e92bb672fd77794a126b9f63b112964be0bf8ee",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 118,
+        "bottom": 72,
+        "nonSpaceCells": 1741
+      }
+    },
+    {
+      "index": 53,
+      "sourceFrameIndex": 106,
+      "outputTimeSeconds": 4.416667,
+      "sourceTimeSeconds": 4.416667,
+      "txt": "frame-053.txt",
+      "svg": "frame-053.svg",
+      "txtSha256": "3d726108fbb941a2695afc5ca81e60dcd12ea84b0a4d4bc9ebe1971830e7e641",
+      "svgSha256": "375651cf04bdae748da71301ce3211af6e8192db8717e4599a284f5a0964ac2e",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1723
+      }
+    },
+    {
+      "index": 54,
+      "sourceFrameIndex": 108,
+      "outputTimeSeconds": 4.5,
+      "sourceTimeSeconds": 4.5,
+      "txt": "frame-054.txt",
+      "svg": "frame-054.svg",
+      "txtSha256": "15dfb2140789555e359006c03e5c09afb4387b8d1e4ceeb5ac33f88dd8ba9727",
+      "svgSha256": "7b8929f1c3bf71964a70c42feb1df49c11f2d32a0f3c3c05a1007106c4601b8b",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1754
+      }
+    },
+    {
+      "index": 55,
+      "sourceFrameIndex": 110,
+      "outputTimeSeconds": 4.583333,
+      "sourceTimeSeconds": 4.583333,
+      "txt": "frame-055.txt",
+      "svg": "frame-055.svg",
+      "txtSha256": "3f710ce2afb69add76fd3672df8759a66eb85556f130e61d4edccadebca6ddd6",
+      "svgSha256": "17315d1373e9450a1042569ead60c5e3b32ddf12fd960c52080653abb9eb7f85",
+      "bounds": {
+        "left": 3,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1706
+      }
+    },
+    {
+      "index": 56,
+      "sourceFrameIndex": 112,
+      "outputTimeSeconds": 4.666667,
+      "sourceTimeSeconds": 4.666667,
+      "txt": "frame-056.txt",
+      "svg": "frame-056.svg",
+      "txtSha256": "79e7a4915ae129f583b7dc6fffe65e91161a4374eeaa44a5b2d09ae330a69d70",
+      "svgSha256": "5c0c762c3b415edec09fb5b3c9cdf50766ccbaeed1a22abcd6a3c8ac9208897d",
+      "bounds": {
+        "left": 2,
+        "top": 3,
+        "right": 119,
+        "bottom": 71,
+        "nonSpaceCells": 1542
+      }
+    },
+    {
+      "index": 57,
+      "sourceFrameIndex": 114,
+      "outputTimeSeconds": 4.75,
+      "sourceTimeSeconds": 4.75,
+      "txt": "frame-057.txt",
+      "svg": "frame-057.svg",
+      "txtSha256": "e6e565530f7f344ea475f2b4b4efef619c1e48b6d57f8e5c81312764d0dedae6",
+      "svgSha256": "8ef0ffdea293a00276c0a0182790fc09e3ae996d567f2f7bb8e0491fad50ed68",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 122,
+        "bottom": 71,
+        "nonSpaceCells": 1731
+      }
+    },
+    {
+      "index": 58,
+      "sourceFrameIndex": 116,
+      "outputTimeSeconds": 4.833333,
+      "sourceTimeSeconds": 4.833333,
+      "txt": "frame-058.txt",
+      "svg": "frame-058.svg",
+      "txtSha256": "4cbf6535aac6553c5b6702ba05ecb0165eeb424771010ad7780f7fd2634dabcb",
+      "svgSha256": "51e41935855b4ceac04f7b3abb06bfc56938365481c8baadd1c44cf469711bb0",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 122,
+        "bottom": 71,
+        "nonSpaceCells": 1725
+      }
+    },
+    {
+      "index": 59,
+      "sourceFrameIndex": 118,
+      "outputTimeSeconds": 4.916667,
+      "sourceTimeSeconds": 4.916667,
+      "txt": "frame-059.txt",
+      "svg": "frame-059.svg",
+      "txtSha256": "ac9a9ed3c1c3bfa7d722660a2b876113cfa08bf43f5f194510cdafbbde238b0e",
+      "svgSha256": "1211ff3a803002e3b5f4851757bcc596468fe734b0e85498e53fa2b3b4dbe6aa",
+      "bounds": {
+        "left": 3,
+        "top": 4,
+        "right": 122,
+        "bottom": 71,
+        "nonSpaceCells": 1731
+      }
+    }
+  ]
+}

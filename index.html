@@ -55,17 +55,35 @@
         user-select: none;
       }
 
+      .billie-art {
+        --reveal-x: -999px;
+        --reveal-y: -999px;
+        --reveal-radius: clamp(130px, 12vw, 190px);
+        position: absolute;
+        z-index: -2;
+        right: clamp(130px, 18vw, 345px);
+        bottom: 1.5svh;
+        height: clamp(190px, 32svh, 390px);
+        aspect-ratio: 793.6 / 820.8;
+        opacity: 0.34;
+        pointer-events: none;
+        user-select: none;
+      }
+
       .walker-sequence,
-      .laptop-sequence {
+      .laptop-sequence,
+      .billie-sequence {
         position: absolute;
         inset: 0;
       }
 
       .walker-red-sequence,
-      .laptop-red-sequence { display: none; }
+      .laptop-red-sequence,
+      .billie-red-sequence { display: none; }
 
       .walk-frame,
-      .laptop-frame {
+      .laptop-frame,
+      .billie-frame {
         position: absolute;
         inset: 0;
         display: block;
@@ -76,7 +94,8 @@
       }
 
       .walk-frame.is-active,
-      .laptop-frame.is-active { opacity: 1; }
+      .laptop-frame.is-active,
+      .billie-frame.is-active { opacity: 1; }
 
       .laptop-art {
         --reveal-x: -999px;
@@ -166,7 +185,8 @@
       @media (hover: hover) and (pointer: fine) {
         @supports ((mask-image: radial-gradient(circle, #000, transparent)) or (-webkit-mask-image: radial-gradient(circle, #000, transparent))) {
           .walker-red-sequence,
-          .laptop-red-sequence {
+          .laptop-red-sequence,
+          .billie-red-sequence {
             display: block;
             filter: brightness(0) saturate(100%) invert(38%) sepia(87%) saturate(2220%) hue-rotate(337deg) brightness(108%) contrast(101%);
             -webkit-mask-image: radial-gradient(
@@ -188,7 +208,8 @@
           }
 
           .walker-base-sequence,
-          .laptop-base-sequence {
+          .laptop-base-sequence,
+          .billie-base-sequence {
             -webkit-mask-image: radial-gradient(
               circle var(--reveal-radius) at var(--reveal-x) var(--reveal-y),
               rgba(0, 0, 0, 0.10) 0%,
@@ -224,6 +245,16 @@
           inset: 1.5svh -3vw auto auto;
           height: 78svh;
           opacity: 0.31;
+        }
+
+        .billie-art {
+          z-index: 0;
+          right: -2vw;
+          left: auto;
+          top: auto;
+          bottom: 20.5svh;
+          height: min(22svh, 185px);
+          opacity: 0.34;
         }
 
         .laptop-art {
@@ -386,6 +417,11 @@
         </div>
       </div>
 
+      <div class="billie-art" role="img" aria-label="Billie, a Kintamani dog, walking beside Daniel in ASCII">
+        <div class="billie-sequence billie-base-sequence"></div>
+        <div class="billie-sequence billie-red-sequence" aria-hidden="true"></div>
+      </div>
+
       <div class="laptop-art" role="img" aria-label="A floating ASCII laptop spinning, closing and reopening">
         <div class="laptop-sequence laptop-base-sequence">
           <img class="laptop-frame is-active" data-frame="0" src="./site-assets/higgsfield-laptop-ascii/frame-000.svg?v=2" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">
@@ -523,13 +559,24 @@
     </main>
 
     <script>
+      const billieSequenceMarkup = Array.from({ length: 60 }, (_, index) => {
+        const number = String(index).padStart(3, '0');
+        const active = index === 0 ? ' is-active' : '';
+        return `<img class="billie-frame${active}" data-frame="${index}" src="./site-assets/billie-ascii-walk/frame-${number}.svg?v=1" alt="" aria-hidden="true" loading="eager" decoding="async" draggable="false">`;
+      }).join('');
+      document.querySelector('.billie-base-sequence').innerHTML = billieSequenceMarkup;
+      document.querySelector('.billie-red-sequence').innerHTML = billieSequenceMarkup;
+
       const hero = document.querySelector('.hero');
       const walkerArt = document.querySelector('.walker-art');
       const laptopArt = document.querySelector('.laptop-art');
+      const billieArt = document.querySelector('.billie-art');
       const frames = [...document.querySelectorAll('.walker-base-sequence .walk-frame')];
       const redFrames = [...document.querySelectorAll('.walker-red-sequence .walk-frame')];
       const laptopFrames = [...document.querySelectorAll('.laptop-base-sequence .laptop-frame')];
       const redLaptopFrames = [...document.querySelectorAll('.laptop-red-sequence .laptop-frame')];
+      const billieFrames = [...document.querySelectorAll('.billie-base-sequence .billie-frame')];
+      const redBillieFrames = [...document.querySelectorAll('.billie-red-sequence .billie-frame')];
       const toggle = document.getElementById('motion-toggle');
       const frameDuration = 83.33333333333333;
       const walkerLoopDuration = frameDuration * frames.length;
@@ -552,9 +599,13 @@
         if (index === walkerCurrent && frames[index]?.classList.contains('is-active')) return;
         frames[walkerCurrent]?.classList.remove('is-active');
         redFrames[walkerCurrent]?.classList.remove('is-active');
+        billieFrames[walkerCurrent]?.classList.remove('is-active');
+        redBillieFrames[walkerCurrent]?.classList.remove('is-active');
         walkerCurrent = index;
         frames[walkerCurrent].classList.add('is-active');
         redFrames[walkerCurrent].classList.add('is-active');
+        billieFrames[walkerCurrent].classList.add('is-active');
+        redBillieFrames[walkerCurrent].classList.add('is-active');
       }
 
       function showLaptop(index) {
@@ -574,7 +625,7 @@
       }
 
       function updateReveal() {
-        for (const art of [walkerArt, laptopArt]) {
+        for (const art of [walkerArt, laptopArt, billieArt]) {
           const rect = art.getBoundingClientRect();
           art.style.setProperty('--reveal-x', (pointerX - rect.left) + 'px');
           art.style.setProperty('--reveal-y', (pointerY - rect.top) + 'px');
@@ -627,7 +678,7 @@
         }
       });
 
-      Promise.allSettled([...frames, ...redFrames, ...laptopFrames, ...redLaptopFrames].map((frame) => frame.decode())).then(() => {
+      Promise.allSettled([...frames, ...redFrames, ...laptopFrames, ...redLaptopFrames, ...billieFrames, ...redBillieFrames].map((frame) => frame.decode())).then(() => {
         if (running) play();
         else pause();
       });
