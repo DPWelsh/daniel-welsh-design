@@ -1,0 +1,509 @@
+{
+  "generatedAt": "2026-08-21T02:45:47.920Z",
+  "source": "public/daniel/site-assets/higgsfield-b2-walk-with-hat.mp4",
+  "sourceSha256": "2f0a836dc819d080cbe90040e1c828fbd346df28af4094a7aab2de33c4ca2025",
+  "engine": "Chafa 1.18.2",
+  "treatment": "B2 high detail / fixed video levels / chronological Higgsfield capped gait",
+  "fps": 12,
+  "frameCount": 60,
+  "frameDurationMs": 83.33333333333333,
+  "loopDurationMs": 5000,
+  "columns": 180,
+  "rows": 198,
+  "crop": {
+    "width": 640,
+    "height": 1224,
+    "x": 40,
+    "y": 16
+  },
+  "ffmpegFilter": "fps=12,crop=640:1224:40:16,hqdn3d=1.2:1.2:2.4:2.4,format=gray,curves=all='0/0 0.18/0.10 0.70/0.82 0.90/0.985 1/1'",
+  "chafa": {
+    "ramp": " .,:;+=xX$#@",
+    "fontRatio": "31/54",
+    "dither": "none",
+    "preprocess": "off",
+    "work": 9
+  },
+  "frames": [
+    {
+      "index": 0,
+      "sourceFrame": 0,
+      "timestampSeconds": 0,
+      "txt": "frame-000.txt",
+      "svg": "frame-000.svg",
+      "asciiSha256": "800529169086bff6b5cc9b08964c39d5fba255d9de1b7e7606697080b7f01c71"
+    },
+    {
+      "index": 1,
+      "sourceFrame": 2,
+      "timestampSeconds": 0.083333,
+      "txt": "frame-001.txt",
+      "svg": "frame-001.svg",
+      "asciiSha256": "512fcfc44de0f8edac9f1a95dcb867a11c1a29420e9d5ea35eae7764facf0601"
+    },
+    {
+      "index": 2,
+      "sourceFrame": 4,
+      "timestampSeconds": 0.166667,
+      "txt": "frame-002.txt",
+      "svg": "frame-002.svg",
+      "asciiSha256": "677addfff23ab6d73cf7038e54e3b41f2b64c2c7104977c0808e0f4b349cf577"
+    },
+    {
+      "index": 3,
+      "sourceFrame": 6,
+      "timestampSeconds": 0.25,
+      "txt": "frame-003.txt",
+      "svg": "frame-003.svg",
+      "asciiSha256": "6f58cc4cecbea1b7540433f9f59987f1a2ede3a2ba5b3944efb5312d32c31c32"
+    },
+    {
+      "index": 4,
+      "sourceFrame": 8,
+      "timestampSeconds": 0.333333,
+      "txt": "frame-004.txt",
+      "svg": "frame-004.svg",
+      "asciiSha256": "82aeda104bfd00a31c7e8f9d9cf47e48768f6ee9ae39d77ea8a773abca2edda5"
+    },
+    {
+      "index": 5,
+      "sourceFrame": 10,
+      "timestampSeconds": 0.416667,
+      "txt": "frame-005.txt",
+      "svg": "frame-005.svg",
+      "asciiSha256": "085d1d51060386fe172daa9c3b48c8808a159e29448fa142aaefe6d53cf4a89e"
+    },
+    {
+      "index": 6,
+      "sourceFrame": 12,
+      "timestampSeconds": 0.5,
+      "txt": "frame-006.txt",
+      "svg": "frame-006.svg",
+      "asciiSha256": "6f86022a696d49c8dc57354594c8a0c9343ab9ed20be1135be7abd421651c495"
+    },
+    {
+      "index": 7,
+      "sourceFrame": 14,
+      "timestampSeconds": 0.583333,
+      "txt": "frame-007.txt",
+      "svg": "frame-007.svg",
+      "asciiSha256": "0612de72ae56219af1371902b1ccc5316bca41b519cc71ca0c936bec02eabbae"
+    },
+    {
+      "index": 8,
+      "sourceFrame": 16,
+      "timestampSeconds": 0.666667,
+      "txt": "frame-008.txt",
+      "svg": "frame-008.svg",
+      "asciiSha256": "fbdc87ce5086a8b06aa2e4e56b5970bb36fe02cafd2b338404d5b462057ef474"
+    },
+    {
+      "index": 9,
+      "sourceFrame": 18,
+      "timestampSeconds": 0.75,
+      "txt": "frame-009.txt",
+      "svg": "frame-009.svg",
+      "asciiSha256": "06a57d2010bb93cc1846c45c6c974876e95e2dc38bc178954b053dd1eceaf3ca"
+    },
+    {
+      "index": 10,
+      "sourceFrame": 20,
+      "timestampSeconds": 0.833333,
+      "txt": "frame-010.txt",
+      "svg": "frame-010.svg",
+      "asciiSha256": "bc7719fe697ebea87cad82f55d294105944c8b67f586cdd2d29222ed9b8fa806"
+    },
+    {
+      "index": 11,
+      "sourceFrame": 22,
+      "timestampSeconds": 0.916667,
+      "txt": "frame-011.txt",
+      "svg": "frame-011.svg",
+      "asciiSha256": "b8fa54b535cb9669552ac8a67a6a36269f94309fe3334ebb9079fb7e640583ba"
+    },
+    {
+      "index": 12,
+      "sourceFrame": 24,
+      "timestampSeconds": 1,
+      "txt": "frame-012.txt",
+      "svg": "frame-012.svg",
+      "asciiSha256": "56ebbefd9fa45cc5e8c4e6434e2bafc0d86ecd28436c8efe6e32baba6ab944ef"
+    },
+    {
+      "index": 13,
+      "sourceFrame": 26,
+      "timestampSeconds": 1.083333,
+      "txt": "frame-013.txt",
+      "svg": "frame-013.svg",
+      "asciiSha256": "76533ce71715c3fc99906929fa2556edbc0b8ad1028111d8b47411f922e521ae"
+    },
+    {
+      "index": 14,
+      "sourceFrame": 28,
+      "timestampSeconds": 1.166667,
+      "txt": "frame-014.txt",
+      "svg": "frame-014.svg",
+      "asciiSha256": "1fa4135f49732905b68633b22b37e993e555a12d2160191ed1fb56c8fb385747"
+    },
+    {
+      "index": 15,
+      "sourceFrame": 30,
+      "timestampSeconds": 1.25,
+      "txt": "frame-015.txt",
+      "svg": "frame-015.svg",
+      "asciiSha256": "11c0b11b14bfa00be3d55e8900faf43d74ff64f77b56f71e278a9f4921801a1f"
+    },
+    {
+      "index": 16,
+      "sourceFrame": 32,
+      "timestampSeconds": 1.333333,
+      "txt": "frame-016.txt",
+      "svg": "frame-016.svg",
+      "asciiSha256": "fa768e6bbe1e6836d59cb5ed4833347bde3c7c01673f72c40f35898fda6fc1a0"
+    },
+    {
+      "index": 17,
+      "sourceFrame": 34,
+      "timestampSeconds": 1.416667,
+      "txt": "frame-017.txt",
+      "svg": "frame-017.svg",
+      "asciiSha256": "5361ff2652586d4bd748f620b1592a2cb8d1ac21137095610f327fc5f0d51422"
+    },
+    {
+      "index": 18,
+      "sourceFrame": 36,
+      "timestampSeconds": 1.5,
+      "txt": "frame-018.txt",
+      "svg": "frame-018.svg",
+      "asciiSha256": "a767b481c997f07c05791204c3cab5ec2fe468d8f071b7a3e0b37daeb2a3a0e1"
+    },
+    {
+      "index": 19,
+      "sourceFrame": 38,
+      "timestampSeconds": 1.583333,
+      "txt": "frame-019.txt",
+      "svg": "frame-019.svg",
+      "asciiSha256": "64d82e9735b6c94584b8e8f099ee22f614f31df48c725f0ec5d8988e46583a6a"
+    },
+    {
+      "index": 20,
+      "sourceFrame": 40,
+      "timestampSeconds": 1.666667,
+      "txt": "frame-020.txt",
+      "svg": "frame-020.svg",
+      "asciiSha256": "0b9dd97eeb0fcfebc4517b321d17c499ee1f3f851b09e63058632b6a47343210"
+    },
+    {
+      "index": 21,
+      "sourceFrame": 42,
+      "timestampSeconds": 1.75,
+      "txt": "frame-021.txt",
+      "svg": "frame-021.svg",
+      "asciiSha256": "885fee4ecc65dc43a99896a5350b7ad3d5769dd235bdf577df09b07e44426be6"
+    },
+    {
+      "index": 22,
+      "sourceFrame": 44,
+      "timestampSeconds": 1.833333,
+      "txt": "frame-022.txt",
+      "svg": "frame-022.svg",
+      "asciiSha256": "a6eec2598470d899f4e0b2e4b754a1fd1dbd007a7a6650d38b6b67a9c35d6afe"
+    },
+    {
+      "index": 23,
+      "sourceFrame": 46,
+      "timestampSeconds": 1.916667,
+      "txt": "frame-023.txt",
+      "svg": "frame-023.svg",
+      "asciiSha256": "187365a22c1332887315b938ee899c161153fc81f494fdca991e7af2c84d6a05"
+    },
+    {
+      "index": 24,
+      "sourceFrame": 48,
+      "timestampSeconds": 2,
+      "txt": "frame-024.txt",
+      "svg": "frame-024.svg",
+      "asciiSha256": "f9f8570cd2a7a3bbffa181445845c4d3371029cf63c4ddc00c42848c32ba55f6"
+    },
+    {
+      "index": 25,
+      "sourceFrame": 50,
+      "timestampSeconds": 2.083333,
+      "txt": "frame-025.txt",
+      "svg": "frame-025.svg",
+      "asciiSha256": "de074440b1411a3fa731099e82daee014fe02535f02b02c951ca3bdec7df7df3"
+    },
+    {
+      "index": 26,
+      "sourceFrame": 52,
+      "timestampSeconds": 2.166667,
+      "txt": "frame-026.txt",
+      "svg": "frame-026.svg",
+      "asciiSha256": "95dd07a907cb54db20f734660856d2b007f53448cf35d33f500342025f5f857e"
+    },
+    {
+      "index": 27,
+      "sourceFrame": 54,
+      "timestampSeconds": 2.25,
+      "txt": "frame-027.txt",
+      "svg": "frame-027.svg",
+      "asciiSha256": "fc3f9622f71f81f40691d8dd0d4d3477741738d39a839e351aa9762629be6e45"
+    },
+    {
+      "index": 28,
+      "sourceFrame": 56,
+      "timestampSeconds": 2.333333,
+      "txt": "frame-028.txt",
+      "svg": "frame-028.svg",
+      "asciiSha256": "66e3eba8b60d6e7da445f0b34de386ebe23c2e28f23886d144eab62365ebe19b"
+    },
+    {
+      "index": 29,
+      "sourceFrame": 58,
+      "timestampSeconds": 2.416667,
+      "txt": "frame-029.txt",
+      "svg": "frame-029.svg",
+      "asciiSha256": "d6532b54966c3fa2ff11617196869502399411416fb411da6e9a55fa17fe3b27"
+    },
+    {
+      "index": 30,
+      "sourceFrame": 60,
+      "timestampSeconds": 2.5,
+      "txt": "frame-030.txt",
+      "svg": "frame-030.svg",
+      "asciiSha256": "c965f1173ba737d7428c5ba6089e0df01df19bd2ccfe56b38070f1f612bd97bb"
+    },
+    {
+      "index": 31,
+      "sourceFrame": 62,
+      "timestampSeconds": 2.583333,
+      "txt": "frame-031.txt",
+      "svg": "frame-031.svg",
+      "asciiSha256": "3eaffe96f5aa84e9020ce3577deeceaac8e3e6a95d5f99218f6fbbb52a999b80"
+    },
+    {
+      "index": 32,
+      "sourceFrame": 64,
+      "timestampSeconds": 2.666667,
+      "txt": "frame-032.txt",
+      "svg": "frame-032.svg",
+      "asciiSha256": "9d3fdb30c81c632e0d09e6ff302c21ac505ba9280614f972115ea56bd4726073"
+    },
+    {
+      "index": 33,
+      "sourceFrame": 66,
+      "timestampSeconds": 2.75,
+      "txt": "frame-033.txt",
+      "svg": "frame-033.svg",
+      "asciiSha256": "09ccfaea68980391190a0580112cf899864637efa4848c621b091ac8a058d423"
+    },
+    {
+      "index": 34,
+      "sourceFrame": 68,
+      "timestampSeconds": 2.833333,
+      "txt": "frame-034.txt",
+      "svg": "frame-034.svg",
+      "asciiSha256": "fcd7b866d1abd80f5071ae4ff5a001333752cd18b43f1c51f68a3cdcdd0fb869"
+    },
+    {
+      "index": 35,
+      "sourceFrame": 70,
+      "timestampSeconds": 2.916667,
+      "txt": "frame-035.txt",
+      "svg": "frame-035.svg",
+      "asciiSha256": "afcd5d599f4cd500101eb4215dd35f68f5cffd4445bebaeaf075a72e5ece1ad1"
+    },
+    {
+      "index": 36,
+      "sourceFrame": 72,
+      "timestampSeconds": 3,
+      "txt": "frame-036.txt",
+      "svg": "frame-036.svg",
+      "asciiSha256": "2be8d758425f22c8a661c4a9d66cf90f165d922cb913bc154ad079b6cf2a4f7e"
+    },
+    {
+      "index": 37,
+      "sourceFrame": 74,
+      "timestampSeconds": 3.083333,
+      "txt": "frame-037.txt",
+      "svg": "frame-037.svg",
+      "asciiSha256": "b5ae01274f300dfbdfdcc37279744e40929b7fd65c538e79c2efacfc231df1a2"
+    },
+    {
+      "index": 38,
+      "sourceFrame": 76,
+      "timestampSeconds": 3.166667,
+      "txt": "frame-038.txt",
+      "svg": "frame-038.svg",
+      "asciiSha256": "74b5ba7d028d2536824cf88132530ff580a2fcc50c5c664b1b527c7c07224c88"
+    },
+    {
+      "index": 39,
+      "sourceFrame": 78,
+      "timestampSeconds": 3.25,
+      "txt": "frame-039.txt",
+      "svg": "frame-039.svg",
+      "asciiSha256": "d0125fdc8d9a0349d7e88af8237d863a45e1b6935b42a34e4e1153702584fb69"
+    },
+    {
+      "index": 40,
+      "sourceFrame": 80,
+      "timestampSeconds": 3.333333,
+      "txt": "frame-040.txt",
+      "svg": "frame-040.svg",
+      "asciiSha256": "500373f072728efe45ffc29db49aee272b665cb05a772b2a9f087cc8582e42f8"
+    },
+    {
+      "index": 41,
+      "sourceFrame": 82,
+      "timestampSeconds": 3.416667,
+      "txt": "frame-041.txt",
+      "svg": "frame-041.svg",
+      "asciiSha256": "d9dff1578b3a7d63bbc08ed3d299493d6ead69a13cd798eb2cce47d5cf655dbc"
+    },
+    {
+      "index": 42,
+      "sourceFrame": 84,
+      "timestampSeconds": 3.5,
+      "txt": "frame-042.txt",
+      "svg": "frame-042.svg",
+      "asciiSha256": "52688a40e5758b51a79e9c35ed7206e6245a792193289e0cb697a73c24d30aee"
+    },
+    {
+      "index": 43,
+      "sourceFrame": 86,
+      "timestampSeconds": 3.583333,
+      "txt": "frame-043.txt",
+      "svg": "frame-043.svg",
+      "asciiSha256": "a257eb1fd946cab179d4fd60a2ae30150dbcf614ac3d155ec622ab1a69857cf8"
+    },
+    {
+      "index": 44,
+      "sourceFrame": 88,
+      "timestampSeconds": 3.666667,
+      "txt": "frame-044.txt",
+      "svg": "frame-044.svg",
+      "asciiSha256": "6fd252fc16898b12fb788a75b0136cf66b8818352d0da74555ab269c15594f87"
+    },
+    {
+      "index": 45,
+      "sourceFrame": 90,
+      "timestampSeconds": 3.75,
+      "txt": "frame-045.txt",
+      "svg": "frame-045.svg",
+      "asciiSha256": "3af81a7495ac829bed19cb122581c728f4ed3ecbfcfd18f762f789478ea7c422"
+    },
+    {
+      "index": 46,
+      "sourceFrame": 92,
+      "timestampSeconds": 3.833333,
+      "txt": "frame-046.txt",
+      "svg": "frame-046.svg",
+      "asciiSha256": "efd810685142fbdb8da83bb9000464582cd295e4be560bc2a84479e2e02b4058"
+    },
+    {
+      "index": 47,
+      "sourceFrame": 94,
+      "timestampSeconds": 3.916667,
+      "txt": "frame-047.txt",
+      "svg": "frame-047.svg",
+      "asciiSha256": "75f3e42697481d0d4e16a9155c84639407f04da039ca7a25e1b2562bd34f81b1"
+    },
+    {
+      "index": 48,
+      "sourceFrame": 96,
+      "timestampSeconds": 4,
+      "txt": "frame-048.txt",
+      "svg": "frame-048.svg",
+      "asciiSha256": "1b05ff2bd6aa12004a03b7e2ae8af16dea872b6e514d94ab179bdb67fc17552d"
+    },
+    {
+      "index": 49,
+      "sourceFrame": 98,
+      "timestampSeconds": 4.083333,
+      "txt": "frame-049.txt",
+      "svg": "frame-049.svg",
+      "asciiSha256": "0914a91f7a7df739333fcf083db770323d865c6815496f73b761c82d127d2dd3"
+    },
+    {
+      "index": 50,
+      "sourceFrame": 100,
+      "timestampSeconds": 4.166667,
+      "txt": "frame-050.txt",
+      "svg": "frame-050.svg",
+      "asciiSha256": "5527d617081ecf708fdde3473b4d3dd9180095151195a6badb2efb71330caaba"
+    },
+    {
+      "index": 51,
+      "sourceFrame": 102,
+      "timestampSeconds": 4.25,
+      "txt": "frame-051.txt",
+      "svg": "frame-051.svg",
+      "asciiSha256": "d5cd70738a93c530d25575d127c7e0eb2970f44bd5366a02c07a8d12f5cea58d"
+    },
+    {
+      "index": 52,
+      "sourceFrame": 104,
+      "timestampSeconds": 4.333333,
+      "txt": "frame-052.txt",
+      "svg": "frame-052.svg",
+      "asciiSha256": "9d8b8e7bd2eb670a2f387e6177bea504ea374749db7fb1dfd0ec5518947c6100"
+    },
+    {
+      "index": 53,
+      "sourceFrame": 106,
+      "timestampSeconds": 4.416667,
+      "txt": "frame-053.txt",
+      "svg": "frame-053.svg",
+      "asciiSha256": "662a26afbec092c2be9481c7707d657e393f3e3aaea90a4eeb1d1d47dac09fb5"
+    },
+    {
+      "index": 54,
+      "sourceFrame": 108,
+      "timestampSeconds": 4.5,
+      "txt": "frame-054.txt",
+      "svg": "frame-054.svg",
+      "asciiSha256": "3b7b199851c4479b6e0436b43d244f901658200c3fdfe43b4a01f6ea1daf6bbc"
+    },
+    {
+      "index": 55,
+      "sourceFrame": 110,
+      "timestampSeconds": 4.583333,
+      "txt": "frame-055.txt",
+      "svg": "frame-055.svg",
+      "asciiSha256": "874328cc93bb2783b786ebdab2cd479767a69c8f4326d4484c6c993c3a802b45"
+    },
+    {
+      "index": 56,
+      "sourceFrame": 112,
+      "timestampSeconds": 4.666667,
+      "txt": "frame-056.txt",
+      "svg": "frame-056.svg",
+      "asciiSha256": "704256e67a254a63807738fdce88e4c146f35afd38dd0f74da03f3bd64d475e0"
+    },
+    {
+      "index": 57,
+      "sourceFrame": 114,
+      "timestampSeconds": 4.75,
+      "txt": "frame-057.txt",
+      "svg": "frame-057.svg",
+      "asciiSha256": "e41eef5560d58776e76d035d52cabb2fa90835f14db727af62550c27a454ab35"
+    },
+    {
+      "index": 58,
+      "sourceFrame": 116,
+      "timestampSeconds": 4.833333,
+      "txt": "frame-058.txt",
+      "svg": "frame-058.svg",
+      "asciiSha256": "cd90e00fa4e9f8616baf405ff28157f4cc58e806d8d2ccb92b1f7cc459f4509d"
+    },
+    {
+      "index": 59,
+      "sourceFrame": 118,
+      "timestampSeconds": 4.916667,
+      "txt": "frame-059.txt",
+      "svg": "frame-059.svg",
+      "asciiSha256": "1199e06342e4773eaf1ab90d6df940e99fcf1cba8d9f6333ab3ed03dab131294"
+    }
+  ]
+}
