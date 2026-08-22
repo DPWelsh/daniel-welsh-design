@@ -10,9 +10,10 @@ import Link from "next/link";
  * palette, same two type voices, different job.
  */
 
-const NAV = [
+const NAV: Array<{ name: string; href: string; external?: boolean }> = [
   { name: "Tutorials", href: "/tutorials" },
   { name: "Journal", href: "/journal/how-we-made-this-website" },
+  { name: "Discord", href: "https://discord.gg/tz6jQDvmrh", external: true },
 ];
 
 export function Masthead({ section }: { section?: string }) {
@@ -41,6 +42,15 @@ export function Masthead({ section }: { section?: string }) {
               <span key={item.name} className="label" style={{ color: "var(--accent)" }}>
                 {item.name}
               </span>
+            ) : item.external ? (
+              <a
+                key={item.name}
+                href={item.href}
+                className="label hover:opacity-70"
+                style={{ color: "var(--muted)" }}
+              >
+                {item.name}
+              </a>
             ) : (
               <Link
                 key={item.name}
