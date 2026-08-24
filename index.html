@@ -789,6 +789,7 @@
       const typeHoldUntil = 1800;
       const typeCharacterDuration = 85;
       const typeEraseDuration = 55;
+      const typeStartupOffset = (typePhraseDuration * 2) + 750;
       const timelineDuration = 15000;
       const laptopFrameDuration = laptopLoopDuration / laptopFrames.length;
       const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -799,6 +800,7 @@
       let startedAt = 0;
       let raf = 0;
       let running = !reduced;
+      let artReady = false;
       let revealRaf = 0;
       let pointerX = -999;
       let pointerY = -999;
@@ -826,8 +828,8 @@
       }
 
       function updateTypewriter(time) {
-        if (reduced) return;
-        const loopTime = time % typeLoopDuration;
+        if (reduced || !artReady) return;
+        const loopTime = (time + typeStartupOffset) % typeLoopDuration;
         const phraseIndex = Math.floor(loopTime / typePhraseDuration);
         const phrase = typePhrases[phraseIndex];
         const phraseTime = loopTime % typePhraseDuration;
@@ -889,6 +891,7 @@
         toggle.textContent = 'Pause motion';
         toggle.setAttribute('aria-pressed', 'true');
         cancelAnimationFrame(raf);
+        if (!artReady) return;
         raf = requestAnimationFrame(tick);
       }
 
@@ -939,9 +942,8 @@
         }
       });
 
-      if (!reduced) updateTypewriter(0);
-
       Promise.allSettled([...frames, ...redFrames, ...laptopFrames, ...redLaptopFrames, ...billieFrames, ...redBillieFrames].map((frame) => frame.decode())).then(() => {
+        artReady = true;
         if (running) play();
         else pause();
       });
