@@ -45,7 +45,7 @@ export function initHero(): () => void {
         const siteMenu = document.getElementById('site-menu') as HTMLDialogElement;
         const menuClose = document.getElementById('menu-close') as HTMLButtonElement;
         const typedWord = document.getElementById('typed-word') as HTMLElement;
-        const typePhrases = ['apps.', 'automations.', 'systems.', 'websites.', 'things.'];
+        const typePhrases = ['apps.', 'systems.', 'websites.', 'things.'];
         const frameDuration = 83.33333333333333;
         const walkerLoopDuration = frameDuration * frames.length;
         const laptopLoopDuration = 7500;
@@ -54,6 +54,10 @@ export function initHero(): () => void {
         const typeHoldUntil = 1800;
         const typeCharacterDuration = 85;
         const typeEraseDuration = 55;
+        // The markup ships the last phrase already typed, so the animation has
+        // to pick up exactly there or the first paint jumps. This lands time 0
+        // on the final phrase, 750ms in: past its typing, short of the erase.
+        const typeStartupOffset = typePhraseDuration * (typePhrases.length - 1) + 750;
         // Every loop below restarts when this wraps, so it has to be a common
         // multiple of all three. The old fixed 15000 only satisfied that while
         // there were three typed phrases; a fourth or fifth made the timeline
@@ -71,6 +75,7 @@ export function initHero(): () => void {
         let startedAt = 0;
         let raf = 0;
         let running = !reduced;
+        let artReady = false;
         let revealRaf = 0;
         let pointerX = -999;
         let pointerY = -999;
@@ -98,8 +103,8 @@ export function initHero(): () => void {
         }
 
         function updateTypewriter(time: number) {
-          if (reduced) return;
-          const loopTime = time % typeLoopDuration;
+          if (reduced || !artReady) return;
+          const loopTime = (time + typeStartupOffset) % typeLoopDuration;
           const phraseIndex = Math.floor(loopTime / typePhraseDuration);
           const phrase = typePhrases[phraseIndex];
           const phraseTime = loopTime % typePhraseDuration;
@@ -161,6 +166,7 @@ export function initHero(): () => void {
           toggle.textContent = 'Pause motion';
           toggle.setAttribute('aria-pressed', 'true');
           cancelAnimationFrame(raf);
+          if (!artReady) return;
           raf = requestAnimationFrame(tick); rafs.push(raf);
         }
 
@@ -211,9 +217,8 @@ export function initHero(): () => void {
           }
         });
 
-        if (!reduced) updateTypewriter(0);
-
         Promise.allSettled([...frames, ...redFrames, ...laptopFrames, ...redLaptopFrames, ...billieFrames, ...redBillieFrames].map((frame) => frame.decode())).then(() => {
+          artReady = true;
           if (running) play();
           else pause();
         });
