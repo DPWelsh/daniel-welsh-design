@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GuideNav } from "@/components/guide-nav";
+import { RoutiqMark } from "@/components/chrome";
 import { CopyBlock } from "@/components/scratch/copy-block";
 import { ScratchSubscribe } from "@/components/scratch/scratch-subscribe";
 import { MISTAKES, REPO_ROWS, STAGES } from "./content";
@@ -424,10 +425,10 @@ export default function ScratchPage() {
           <div className="flex items-center gap-4">
             {/* Was an <img> for /routiq-logo-light.svg, which this site has
                 never shipped, so the footer rendered a broken image. The
-                masthead's DW wordmark needs no asset. */}
+                inlined mark needs no asset at all. */}
             <Link href="/" aria-label="Daniel Welsh home" className="hover:opacity-70">
-              <span className="mark text-[19px]" style={{ color: PROMPT }}>
-                DW
+              <span style={{ color: PROMPT }}>
+                <RoutiqMark className="h-5 w-5" />
               </span>
             </Link>
             <span className={`${mono} text-[10px] uppercase tracking-[0.25em]`} style={{ color: FAINT }}>

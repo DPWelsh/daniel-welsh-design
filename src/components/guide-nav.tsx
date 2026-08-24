@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NAV } from "@/components/chrome";
+import { NAV, RoutiqMark } from "@/components/chrome";
 
 /**
  * The persistent menu for the scrolling guide pages.
@@ -34,7 +34,14 @@ export function GuideNav() {
       <div
         className={`${MONO} mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-5 py-2.5 text-[10px] uppercase tracking-[0.25em] sm:px-8`}
       >
-        <Link href="/" className="transition-colors hover:text-[#a43e35]" style={{ color: FAINT }}>
+        <Link
+          href="/"
+          className="flex items-center gap-2.5 transition-colors hover:text-[#a43e35]"
+          style={{ color: FAINT }}
+        >
+          <span style={{ color: PROMPT }}>
+            <RoutiqMark className="h-[15px] w-[15px] shrink-0" />
+          </span>
           Daniel Welsh<span style={{ color: PROMPT }}>.</span> Routiq
         </Link>
 

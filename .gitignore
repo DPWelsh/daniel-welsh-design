@@ -6,3 +6,7 @@ node_modules
 .DS_Store
 .env*
 .vercel
+# 26MB of brand source: print CMYK, PDFs, full-res gradients. The few files
+# the site actually serves are copied into public/ and src/app/ instead, so
+# this never needs uploading on a deploy.
+brand package/
