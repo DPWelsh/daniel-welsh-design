@@ -45,7 +45,7 @@ export function initHero(): () => void {
         const siteMenu = document.getElementById('site-menu') as HTMLDialogElement;
         const menuClose = document.getElementById('menu-close') as HTMLButtonElement;
         const typedWord = document.getElementById('typed-word') as HTMLElement;
-        const typePhrases = ['apps.', 'automations.', 'systems.', 'workflows.', 'things.'];
+        const typePhrases = ['apps.', 'automations.', 'systems.', 'websites.', 'things.'];
         const frameDuration = 83.33333333333333;
         const walkerLoopDuration = frameDuration * frames.length;
         const laptopLoopDuration = 7500;
@@ -54,7 +54,14 @@ export function initHero(): () => void {
         const typeHoldUntil = 1800;
         const typeCharacterDuration = 85;
         const typeEraseDuration = 55;
-        const timelineDuration = 15000;
+        // Every loop below restarts when this wraps, so it has to be a common
+        // multiple of all three. The old fixed 15000 only satisfied that while
+        // there were three typed phrases; a fourth or fifth made the timeline
+        // wrap mid-cycle and replay the first word twice in a row.
+        const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
+        const timelineDuration = [walkerLoopDuration, laptopLoopDuration, typeLoopDuration]
+          .map((d) => Math.round(d))
+          .reduce((a, b) => (a / gcd(a, b)) * b);
         const laptopFrameDuration = laptopLoopDuration / laptopFrames.length;
         const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
         const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
