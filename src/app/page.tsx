@@ -111,7 +111,7 @@ export default function Home() {
         </header>
 
         <nav className="site-menu__nav" aria-label="Primary navigation">
-          <Link className="site-menu__link" href="/journal/how-we-made-this-website">
+          <Link className="site-menu__link" href="/blog">
             <small aria-hidden="true">01</small>
             <span>Blog</span>
           </Link>
