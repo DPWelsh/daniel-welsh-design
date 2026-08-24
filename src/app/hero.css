@@ -1,6 +1,5 @@
-/* The hero, lifted from the hand-built index.html.
-   Palette, resets and @font-face moved to globals.css; everything that
-   makes the ASCII walk and the laptop float stays exactly as tuned. */
+/* The hero. Palette, resets and @font-face live in globals.css; everything
+   that makes the ASCII walk and the laptop float stays exactly as tuned. */
 .hero {
         isolation: isolate;
         position: relative;

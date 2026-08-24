@@ -1,13 +1,12 @@
-/* The hero animation, lifted verbatim from the hand-built index.html.
+/* The hero animation.
  *
- * Deliberately still DOM-query driven rather than rewritten into React
- * state: it drives 240 frame swaps a second across four sequences, and
- * re-rendering that through React would be slower and less faithful. The
- * component renders the markup, this drives it, and the returned function
- * tears it all down when the route unmounts.
+ * Deliberately DOM-query driven rather than React state: it drives 240
+ * frame swaps a second across four sequences, and re-rendering that through
+ * React would be slower. The component renders the markup, this drives it,
+ * and the returned function tears it all down when the route unmounts.
  *
- * Only change from the original: /site-assets is absolute, because a
- * relative path breaks on any route deeper than /.
+ * /site-assets paths must stay absolute; relative ones break on any route
+ * deeper than /.
  */
 export function initHero(): () => void {
   const listeners: Array<[EventTarget, string, EventListener]> = [];

@@ -3,6 +3,7 @@ Thumbs.db
 *.log
 node_modules
 .next
+tsconfig.tsbuildinfo
 .DS_Store
 .env*
 .vercel
