@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://danielwelsh.design/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://danielwelsh.design/:path*",
+      "permanent": true
+    }
+  ]
+}
