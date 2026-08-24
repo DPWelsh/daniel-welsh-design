@@ -78,7 +78,7 @@ export default function Home() {
 
         <section className="copy">
           <p className="eyebrow">Daniel Welsh - Routiq.</p>
-          <h1 aria-label="I build apps, websites, and things.">
+          <h1 aria-label="I build apps, websites, systems, automations, and things.">
             <span className="build-line">I build</span>
             <span className="typed-line" aria-hidden="true">
               <span id="typed-word">things.</span>
