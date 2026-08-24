@@ -2,7 +2,7 @@
 
 Personal brand website for Daniel Welsh: builder, designer, and product storyteller.
 
-The site is dependency-free static HTML with animated ASCII artwork, a floating laptop, responsive layouts, reduced-motion support, a cursor-driven colour shimmer, and a small build journal.
+The site is dependency-free static HTML with animated ASCII artwork, a floating laptop, responsive layouts, reduced-motion support, a cursor-driven colour shimmer, and a small build blog.
 
 ## Run locally
 

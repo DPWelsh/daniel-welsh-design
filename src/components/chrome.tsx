@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const NAV: Array<{ name: string; href: string; external?: boolean }> = [
   { name: "Tutorials", href: "/tutorials" },
-  { name: "Journal", href: "/journal/how-we-made-this-website" },
+  { name: "Blog", href: "/journal/how-we-made-this-website" },
   { name: "Discord", href: "https://discord.gg/tz6jQDvmrh", external: true },
 ];
 
@@ -36,7 +36,7 @@ export function Masthead({ section }: { section?: string }) {
         </Link>
         <nav className="flex items-center gap-5">
           {/* The section you're already in shows as a label, not a link, so
-              the bar never reads "Tutorials Tutorials Journal". */}
+              the bar never reads "Tutorials Tutorials Blog". */}
           {NAV.map((item) =>
             item.name === section ? (
               <span key={item.name} className="label" style={{ color: "var(--accent)" }}>
