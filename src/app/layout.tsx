@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { PostHogProvider } from "./posthog-provider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://danielwelsh.design"),
@@ -16,7 +17,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <PostHogProvider />
+        {children}
+      </body>
     </html>
   );
 }
