@@ -10,7 +10,7 @@ import Link from "next/link";
  * palette, same two type voices, different job.
  */
 
-const NAV: Array<{ name: string; href: string; external?: boolean }> = [
+export const NAV: Array<{ name: string; href: string; external?: boolean }> = [
   { name: "Tutorials", href: "/tutorials" },
   { name: "Blog", href: "/journal/how-we-made-this-website" },
   { name: "Discord", href: "https://discord.gg/tz6jQDvmrh", external: true },

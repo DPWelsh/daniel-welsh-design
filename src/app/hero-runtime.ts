@@ -201,6 +201,9 @@ export function initHero(): () => void {
             event.clientY > rect.bottom;
 
           if (event.target === siteMenu && outside) closeMenu();
+          // Following a link routes away with the dialog still open, which
+          // never fires close and strands body.menu-open on the next page.
+          else if ((event.target as Element).closest('a')) closeMenu();
         }) as EventListener);
         on(siteMenu, 'close', () => {
           menuToggle.setAttribute('aria-expanded', 'false');
@@ -228,5 +231,9 @@ export function initHero(): () => void {
     for (const id of rafs) cancelAnimationFrame(id);
     if (typeof raf === "number") cancelAnimationFrame(raf);
     if (typeof revealRaf === "number") cancelAnimationFrame(revealRaf);
+    // A route change unmounts the dialog without ever firing its close
+    // event, so the scroll lock would otherwise ride along to the next
+    // page and leave it unscrollable.
+    document.body.classList.remove('menu-open');
   };
 }

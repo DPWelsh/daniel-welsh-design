@@ -3,6 +3,7 @@ import { Game } from "./game";
 import { MissingTool, StackSubscribe } from "./capture";
 import { getRates } from "./rates";
 import { serif, mono } from "../scratch/ui";
+import { GuideNav } from "@/components/guide-nav";
 
 /**
  * /saas-calc. One page now.
@@ -44,6 +45,9 @@ export default async function SaasCostCalculatorPage() {
 
   return (
     <main className="relative min-h-screen" style={{ backgroundColor: CLOUD }}>
+      {/* This page shipped with no chrome at all: once you were here the
+          only way out was the back button. */}
+      <GuideNav />
       <style>{`
         @keyframes stampIn{0%{transform:scale(2.4) rotate(-14deg);opacity:0}60%{transform:scale(0.92) rotate(2deg);opacity:1}100%{transform:scale(1) rotate(-3deg)}}
         @keyframes paneIn{from{transform:translateX(18px);opacity:0}to{transform:none;opacity:1}}

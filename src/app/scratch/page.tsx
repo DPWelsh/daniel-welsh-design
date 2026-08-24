@@ -162,19 +162,16 @@ export default function ScratchPage() {
                   {label}
                 </a>
               ))}
+              {/* Was /stacks, and beside it /supabase-vs-neon. Both were
+                  routiq-labs pages that this site never had. The stack
+                  pricing lives at /saas-calc here; the database comparison
+                  has no equivalent yet, so it is gone rather than a 404. */}
               <Link
-                href="/stacks"
+                href="/saas-calc"
                 className="transition-colors hover:text-white"
                 style={{ color: PROMPT }}
               >
                 The stacks →
-              </Link>
-              <Link
-                href="/supabase-vs-neon"
-                className="transition-colors hover:text-white"
-                style={{ color: PROMPT }}
-              >
-                Supabase or Neon →
               </Link>
             </nav>
           </div>
@@ -425,9 +422,13 @@ export default function ScratchPage() {
           style={{ borderColor: RULE }}
         >
           <div className="flex items-center gap-4">
-            <Link href="/" aria-label="Daniel Welsh home">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/routiq-logo-light.svg" alt="routiq." className="h-5 w-auto opacity-80" />
+            {/* Was an <img> for /routiq-logo-light.svg, which this site has
+                never shipped, so the footer rendered a broken image. The
+                masthead's DW wordmark needs no asset. */}
+            <Link href="/" aria-label="Daniel Welsh home" className="hover:opacity-70">
+              <span className="mark text-[19px]" style={{ color: PROMPT }}>
+                DW
+              </span>
             </Link>
             <span className={`${mono} text-[10px] uppercase tracking-[0.25em]`} style={{ color: FAINT }}>
               Field Guide № 001 · built on its own rules
