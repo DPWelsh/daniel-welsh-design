@@ -1,6 +1,6 @@
 "use client";
 
-import { type Option, type Slot } from "./game-data";
+import { type Option, type Slot } from "./stack-data";
 import { NOTES } from "./tool-notes";
 import { SCALE, SELFHOST } from "./build-modes";
 import { serif, mono } from "../scratch/ui";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { CHALLENGES, SECTIONS, SLOTS, grade, type Challenge, type Option, type Slot } from "./game-data";
+import { CHALLENGES, SECTIONS, SLOTS, grade, type Challenge, type Option, type Slot } from "./stack-data";
 import { MODES, lockReason, priceIn, type Mode } from "./build-modes";
 import { CURRENCIES, type Rates } from "./rates";
 import { serif, mono } from "../scratch/ui";
@@ -9,7 +9,7 @@ import { Logo } from "./logo";
 import { DetailCard } from "./detail-card";
 import { CLAY, CLOUD, CORE, DIM, FAINT, PROMPT, RULE, RULE_SOFT, money } from "./theme";
 
-export function Game({ rates }: { rates: Rates }) {
+export function Calculator({ rates }: { rates: Rates }) {
   const [challenge, setChallenge] = useState<Challenge>(CHALLENGES[1]);
   const [mode, setMode] = useState<Mode>("quick");
   const [cur, setCur] = useState<string>("USD");

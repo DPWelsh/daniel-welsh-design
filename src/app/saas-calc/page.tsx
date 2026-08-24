@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Game } from "./game";
+import { Calculator } from "./calculator";
 import { MissingTool, StackSubscribe } from "./capture";
 import { getRates } from "./rates";
 import { serif, mono } from "../scratch/ui";
@@ -15,7 +15,7 @@ import { GuideNav } from "@/components/guide-nav";
  * locked, nothing required, just a running total.
  *
  * Shared CSS lives here rather than in either component, because both the
- * game and the capture forms use the .sb-cta button treatment.
+ * calculator and the capture forms use the .sb-cta button treatment.
  *
  * PROSE RULE: no em dashes anywhere on this page.
  */
@@ -94,7 +94,7 @@ export default async function SaasCostCalculatorPage() {
           </p>
         </header>
 
-        <Game rates={rates} />
+        <Calculator rates={rates} />
 
         <MissingTool source="saas-calc" />
         <StackSubscribe source="saas-calc" />

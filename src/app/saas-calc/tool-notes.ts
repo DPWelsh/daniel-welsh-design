@@ -1,5 +1,5 @@
 /* ── What each tool actually is ──────────────────────────────────────
-   Keyed by option id from game-data.ts. Feeds the detail pane that opens
+   Keyed by option id from stack-data.ts. Feeds the detail pane that opens
    when you tap the ⓘ on any option.
 
    `what` is one or two sentences on the job it does. `plan` is what this
@@ -8,7 +8,7 @@
    where the domain is not where you would send someone to buy it.
 
    Opinions in here are mine and are marked as opinions. Prices live in
-   game-data.ts and were verified against vendor pages on 16 Aug 2026.
+   stack-data.ts and were verified against vendor pages on 16 Aug 2026.
 
    PROSE RULE: no em dashes anywhere. */
 

@@ -1,6 +1,6 @@
-/* ── The Stack Builder game · data ───────────────────────────────────
-   Gamified v2 of /saas-calc. Same verified pricing research
-   (16 Aug 2026), reshaped into job slots and budget challenges.
+/* ── The stack calculator · data ─────────────────────────────────────
+   Verified pricing research (16 Aug 2026), shaped into job slots and
+   budget tiers.
 
    The board is the complete stack AND tools bill, walked in two parts:
    Part 1 the stack (what runs the product), Part 2 the tools (what

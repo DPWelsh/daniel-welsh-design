@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { type Option } from "./game-data";
+import { type Option } from "./stack-data";
 import { mono } from "../scratch/ui";
 import { DIM } from "./theme";
 
