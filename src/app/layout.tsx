@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { PostHogProvider } from "./posthog-provider";
+import { CapturePopupMount } from "@/components/capture-popup-mount";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://danielwelsh.design"),
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body>
         <PostHogProvider />
         {children}
+        <CapturePopupMount />
       </body>
     </html>
   );

@@ -120,3 +120,22 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .rise { animation: none; }
 }
+
+/* Capture popup entrance. Kept here rather than styled-jsx so the component
+   stays a plain client component with no extra dependency. */
+.dw-fade { animation: dw-fade-in 0.2s ease; }
+.dw-pop { animation: dw-pop-in 0.26s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+@keyframes dw-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes dw-pop-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dw-fade, .dw-pop { animation: none; }
+}
