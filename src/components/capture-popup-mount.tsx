@@ -76,6 +76,47 @@ const COPY: Record<string, { title: string; line: string; cta: string; done?: st
     line: "How the things on this site actually got made, written up when there is something worth writing up.",
     cta: "send me the next note",
   },
+  ship: {
+    title: "One guide per thing that broke.",
+    line: "This is № 002. The next one gets written the week something else breaks, and you get it then. Nothing in between.",
+    cta: "send me the next one",
+    done: "Done. The next guide lands the week it is written.",
+  },
+  scale: {
+    title: "The next bill that stung.",
+    line: "What changed, what it cost before and after, and the number that made the swap worth doing.",
+    cta: "send me the next one",
+  },
+  "get-started": {
+    title: "Day one, then day two.",
+    line: "You've got the machine set up. The next guide is the first real build, sent when you'd actually need it.",
+    cta: "send me the next step",
+  },
+  domain: {
+    title: "The rest of the setup.",
+    line: "Domains are the first of a dozen things nobody writes down properly. One guide each, as they come up.",
+    cta: "send me the next one",
+  },
+  automation: {
+    title: "The next ten.",
+    line: "What got automated, what it replaced, and the honest rate at which it breaks. One write-up per batch.",
+    cta: "send me the next batch",
+  },
+  presets: {
+    title: "The rest of the brand kit.",
+    line: "Palette and preset are the start. Type, logo rules and the machine-readable version follow, as they get written.",
+    cta: "send me the rest",
+  },
+  "supabase-vs-neon": {
+    title: "The next comparison.",
+    line: "One pair of tools per write-up, with the question you should actually be asking instead. Nothing in between.",
+    cta: "send me the next one",
+  },
+  "agent-vps": {
+    title: "The next thing I put on a server.",
+    line: "What ran unattended, what it cost, and what I locked down before letting it. One write-up per setup.",
+    cta: "send me the next one",
+  },
 };
 
 export function CapturePopupMount() {
