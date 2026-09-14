@@ -111,17 +111,21 @@ export default function Home() {
         </header>
 
         <nav className="site-menu__nav" aria-label="Primary navigation">
-          <Link className="site-menu__link" href="/blog">
+          <Link className="site-menu__link" href="/building">
             <small aria-hidden="true">01</small>
+            <span>Building</span>
+          </Link>
+          <Link className="site-menu__link" href="/blog">
+            <small aria-hidden="true">02</small>
             <span>Blog</span>
           </Link>
           {/* No longer "Soon". The tutorials are here. */}
           <Link className="site-menu__link" href="/tutorials">
-            <small aria-hidden="true">02</small>
+            <small aria-hidden="true">03</small>
             <span>Tutorials</span>
           </Link>
           <a className="site-menu__link" href="https://discord.gg/tz6jQDvmrh">
-            <small aria-hidden="true">03</small>
+            <small aria-hidden="true">04</small>
             <span>Discord</span>
           </a>
         </nav>

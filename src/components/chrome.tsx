@@ -11,6 +11,7 @@ import Link from "next/link";
  */
 
 export const NAV: Array<{ name: string; href: string; external?: boolean }> = [
+  { name: "Building", href: "/building" },
   { name: "Tutorials", href: "/tutorials" },
   { name: "Blog", href: "/blog" },
   { name: "Discord", href: "https://discord.gg/tz6jQDvmrh", external: true },
