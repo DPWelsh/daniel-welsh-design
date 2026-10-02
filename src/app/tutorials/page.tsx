@@ -131,8 +131,26 @@ const ENTRIES: Entry[] = [
     when: "Alongside step 03 of any build.",
   },
   {
-    href: "/domain",
+    href: "/higgsfield-vs-fal",
     n: "013",
+    title: "One AI video,",
+    accent: "two lanes.",
+    blurb:
+      "The same shot made in Higgsfield on subscription credits and through fal.ai's API by the second, priced per finished second with the retakes in.",
+    when: "Before you pay for a video plan.",
+  },
+  {
+    href: "/overlay-automation",
+    n: "014",
+    title: "Overlays that land",
+    accent: "on the word.",
+    blurb:
+      "Graphics that appear on the exact word you say and sit above your face, not on it. Measure the safe zone, build to a chroma-key contract, prove every cue fired.",
+    when: "When you're cutting reels by hand.",
+  },
+  {
+    href: "/domain",
+    n: "015",
     title: "Domain day.",
     accent: "The full list.",
     blurb:
@@ -141,7 +159,7 @@ const ENTRIES: Entry[] = [
   },
   {
     href: "/easy",
-    n: "014",
+    n: "016",
     title: "Three easy",
     accent: "automations.",
     blurb:
@@ -150,7 +168,7 @@ const ENTRIES: Entry[] = [
   },
   {
     href: "/automation",
-    n: "015",
+    n: "017",
     title: "Ten automations,",
     accent: "and the failure rate.",
     blurb:
@@ -159,7 +177,7 @@ const ENTRIES: Entry[] = [
   },
   {
     href: "/fast",
-    n: "016",
+    n: "018",
     title: "Three things",
     accent: "that make it fast.",
     blurb:
@@ -168,7 +186,7 @@ const ENTRIES: Entry[] = [
   },
   {
     href: "/skills",
-    n: "017",
+    n: "019",
     title: "The skill",
     accent: "library.",
     blurb:
@@ -177,7 +195,7 @@ const ENTRIES: Entry[] = [
   },
   {
     href: "/agent-vps",
-    n: "018",
+    n: "020",
     title: "Claude Code on a server,",
     accent: "unattended.",
     blurb:
