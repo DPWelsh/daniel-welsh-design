@@ -18,7 +18,7 @@ import {
  */
 
 export const metadata: Metadata = {
-  title: "Redo Your Instagram Grid With Claude: The Prompts | Routiq Labs",
+  title: "Redo Your Instagram Grid With Claude: The Prompts",
   description:
     "How I redid all 21 reel covers with Claude Code: a look to copy, my brand kit, a still from every reel, titles from the transcript, real stickers, and a mock before the swap. Every prompt included.",
   alternates: { canonical: "https://danielwelsh.design/grid" },
