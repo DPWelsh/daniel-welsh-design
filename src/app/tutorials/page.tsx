@@ -202,6 +202,15 @@ const ENTRIES: Entry[] = [
       "Putting the agent on a VPS so the work carries on after you shut the laptop, and what to lock down before you do.",
     when: "When one machine isn't enough.",
   },
+  {
+    href: "/grid",
+    n: "021",
+    title: "Redo your grid",
+    accent: "with Claude.",
+    blurb:
+      "How I redid all 21 of my reel covers: a look to copy, a still from every reel, titles from the transcript, real stickers, and every prompt.",
+    when: "When your grid looks like nobody planned it.",
+  },
 ];
 
 export default function TutorialsPage() {

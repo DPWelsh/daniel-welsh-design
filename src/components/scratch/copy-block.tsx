@@ -12,6 +12,7 @@ export function CopyBlock({
   filename,
   body,
   tone = "dark",
+  children,
 }: {
   id: string;
   filename: string;
@@ -19,6 +20,9 @@ export function CopyBlock({
   /** "light" for pages on a cloud ground (e.g. /brand-kit). The code itself
    *  stays dark either way — only the chrome around it flips. */
   tone?: "dark" | "light";
+  /** Optional markup for the same text, when it has to wrap (a prose prompt).
+   *  Must read as exactly `body`. The button always copies `body`. */
+  children?: React.ReactNode;
 }) {
   const [copied, setCopied] = useState(false);
   const light = tone === "light";
@@ -66,7 +70,7 @@ export function CopyBlock({
             : { borderColor: "rgba(255,255,255,0.1)", background: "rgba(0,0,0,0.4)", color: "rgba(255,255,255,0.75)" }
         }
       >
-        {body}
+        {children ?? body}
       </pre>
     </div>
   );
