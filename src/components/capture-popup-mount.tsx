@@ -66,7 +66,7 @@ const COPY: Record<string, { title: string; line: string; cta: string; done?: st
     done: "Done. One guide per row, and a note when a price moves.",
   },
   effects: {
-    title: "Twelve more effects are coming.",
+    title: "Eleven more effects are coming.",
     line: "They are recipes for now. Each one gets built and checked when a reel needs it, and you get it the week it works.",
     cta: "send me new effects",
     done: "Done. Each new effect lands in your inbox when it works.",

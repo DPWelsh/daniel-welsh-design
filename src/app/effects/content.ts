@@ -6,8 +6,8 @@
  *
  * Only what actually happened is stated:
  * - Romotiq: 42 days, 1,106 commits, 109 releases, zero paying customers (Stripe).
- * - The skill: 10 effects rendered and checked on a real take (16 Oct 2026); 12 more
- *   are recipes, said so plainly.
+ * - The skill: 11 effects rendered and checked on real takes (16 Oct 2026); 11 more
+ *   are recipes, said so plainly. The demo up top is the actual reel, edited by the skill.
  * - The source: @tenfoldmarc's "17 video effects claude can create" (276K plays, 15 Oct),
  *   taken apart frame by frame.
  * The production numbers are his edited reels, measured.
@@ -54,7 +54,7 @@ export const EFFECTS: Effect[] = [
   { id: "04", name: "Frame break", what: "The shot shrinks to a card and your head sticks out of it.", ready: false },
   { id: "06", name: "Phone mockup", what: "A phone swings in behind your shoulder and a button gets tapped.", ready: false },
   { id: "07", name: "Checklist", what: "Items type in as you say them and tick on the last word.", ready: false },
-  { id: "08", name: "Headline wall", what: "Real headlines slap onto the wall around you.", ready: false },
+  { id: "08", name: "Headline wall", what: "Real numbers slam onto the wall behind you while the room goes dark.", ready: true },
   { id: "09", name: "Zoom-through cut", what: "Fly into the frame and out of the next shot.", ready: false },
   { id: "10", name: "Chart grow", what: "A line chart draws itself behind your head.", ready: false },
   { id: "11", name: "Pull-back reveal", what: "The whole video shrinks into the app that made it.", ready: false },
@@ -65,6 +65,21 @@ export const EFFECTS: Effect[] = [
   { id: "x2", name: "Freeze and label", what: "The picture freezes and callouts point at you.", ready: false },
   { id: "x3", name: "Before and after", what: "A slider wipes from the raw clip to the edit.", ready: false },
 ];
+
+/* The reel up top, beat by beat. Times are where each effect starts in the video. */
+export const BEATS: { t: string; effect: string; on: string }[] = [
+  { t: "0:00", effect: "Frame-0 title", on: "on screen before a word is said" },
+  { t: "0:03", effect: "Headline wall", on: "\"blowing up on socials\"" },
+  { t: "0:07", effect: "Cover story + label pill", on: "\"Claude killed the app\"" },
+  { t: "0:10", effect: "Spotlight", on: "\"I can't make any money\"" },
+  { t: "0:12", effect: "Doodle boil + room dim", on: "\"for free\"" },
+  { t: "0:15", effect: "Digital zoom", on: "\"Wait\"" },
+  { t: "0:18", effect: "Label pills, one per step", on: "\"drop it into Claude\"" },
+  { t: "0:22", effect: "Comment CTA", on: "\"Comment for the skill\"" },
+];
+
+export const DEMO_NOTE =
+  "That is the reel this page came from. I filmed it on my phone and Claude edited it with the skill below. Captions run the whole way.";
 
 export type Step = { n: string; name: string; what: string; prompt: string };
 
@@ -110,6 +125,7 @@ export const MISTAKES: { name: string; line: string }[] = [
   { name: "White on white", line: "White captions vanished when a white card passed behind them. A dark halo round the letters fixed it." },
   { name: "A word too wide", line: "A seven-letter word at a fixed size ran off both edges. Fit it to the frame instead." },
   { name: "The fast cut-out setting", line: "The GPU option is known to damage faces. Run the cut-out on the CPU and wait." },
+  { name: "Splitting the cut-out", line: "I ran it in three parallel pieces to go faster. Each piece ran three times slower. Start it and go make a coffee." },
   { name: "Effects as the fix", line: "Polish does not predict plays. His biggest reels are selfies. Fix the mic, the hook and the keyword first." },
 ];
 

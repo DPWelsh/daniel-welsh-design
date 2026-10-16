@@ -85,12 +85,14 @@ BEFORE the word it illustrates.** Entrances are ≤ 0.25 s. Exits are hard cuts 
   - Drive each word's reveal from `transcript.json`; it's the captions engine pointed at a list.
   - Registry starting point: `marker-checklist-card`.
 
-### 08 · headline wall 📝
+### 08 · headline wall ✅ `snippets/08-headline-wall.html`
 - **Measured:**
   - A: about 10 clippings/tweets slap onto the wall in 0.5 s, then a highlighter swipes the keyword.
-  - B: screenshots of other creators' reels slide in and hang behind his head while the room dims. → `R/08-headline-wall.md`
-- **Build:** `00-room-dim` plus cards in `.behind`. Each card slams in over 3 frames (scale 1.4→1, rot ±6°). Highlighter = a `scaleX` 0→1 rect behind the word, accent at 40%.
-  - Use real headlines/screens only (receipts rule).
+  - B: screenshots hang behind his head while the room dims. → `R/08-headline-wall.md`
+- **Build:** receipt cards in `.behind`, each a 3-frame slam (scale 1.4→1, rotation from a fixed list), hard cut out. Pair with `00-room-dim`.
+  - The head occluding the inner edges is the depth tell. Keep the numbers outside the head's widest lean.
+  - The go-to on very close takes, where an orbit's near cards would cross the face.
+  - Real numbers only, each with a source line.
 
 ### 09 · zoom-through cut 📝
 - **Measured:** exponential zoom into a dark area with radial blur, then 2 black frames, then the next shot explodes out of a bright point and settles.

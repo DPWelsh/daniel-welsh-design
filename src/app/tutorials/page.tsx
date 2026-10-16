@@ -217,7 +217,7 @@ const ENTRIES: Entry[] = [
     title: "Video effects",
     accent: "with no editor.",
     blurb:
-      "The Claude Code skill that replaced my video editor: captions, orbit, cover story, doodle boil, spotlight and a comment CTA, rendered free with HyperFrames.",
+      "The Claude Code skill that replaced my video editor: captions, a headline wall, cover story, doodle boil, spotlight and a comment CTA, rendered free with HyperFrames.",
     when: "When your reels look like a phone recording.",
   },
 ];

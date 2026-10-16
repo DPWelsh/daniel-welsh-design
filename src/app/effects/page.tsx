@@ -3,7 +3,7 @@ import { GuideNav } from "@/components/guide-nav";
 import { CopyBlock } from "@/components/scratch/copy-block";
 import { ScratchSubscribe } from "@/components/scratch/scratch-subscribe";
 import {
-  BEFORE_FILMING, CLOSING, CREDIT, EFFECTS, FIRST_PROMPT, INSTALL, LAYERS, LEDE, MISTAKES, STEPS, WHY_YOU,
+  BEATS, BEFORE_FILMING, CLOSING, CREDIT, DEMO_NOTE, EFFECTS, FIRST_PROMPT, INSTALL, LAYERS, LEDE, MISTAKES, STEPS, WHY_YOU,
 } from "./content";
 import {
   DIM, ENERGY, FAINT, Kicker, PAPER, PROMPT,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://danielwelsh.design/effects" },
   openGraph: {
     title: "Video Effects With Claude, No Editor",
-    description: "The skill that replaced my video editor. Ten effects ready, twelve recipes, one-line install.",
+    description: "The skill that replaced my video editor. Eleven effects ready, eleven recipes, one-line install.",
   },
 };
 
@@ -49,28 +49,36 @@ export default function EffectsPage() {
         <p className="mt-6 text-lg leading-relaxed" style={{ color: DIM }}>{LEDE}</p>
         <p className="mt-4 text-base leading-relaxed" style={{ color: FAINT }}>{WHY_YOU}</p>
 
-        {/* The proof: two real renders from the skill, on one of my own takes. */}
-        <div className="mt-10 grid grid-cols-2 gap-4">
-          {[
-            { src: "/effects/full-pass.mp4", poster: "/effects/full-pass.jpg", label: "Eight seconds, eight effects" },
-            { src: "/effects/comment-cta.mp4", poster: "/effects/comment-cta.jpg", label: "The comment CTA" },
-          ].map((v) => (
-            <figure key={v.src}>
-              <p className={`${mono} mb-2 text-xs uppercase tracking-widest`} style={{ color: PROMPT }}>{v.label}</p>
-              <video
-                src={v.src}
-                poster={v.poster}
-                className="aspect-[9/16] w-full rounded-2xl object-cover"
-                style={{ border: `1px solid ${RULE}`, background: "#1f211e" }}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label={`${v.label}, rendered by the reel-effects skill`}
-              />
-            </figure>
-          ))}
+        {/* The proof: the actual reel, edited by the skill, with what fires when. */}
+        <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-[minmax(0,320px)_1fr] sm:items-start">
+          <figure>
+            <p className={`${mono} mb-2 text-xs uppercase tracking-widest`} style={{ color: PROMPT }}>This reel, edited by the skill</p>
+            <video
+              src="/effects/this-reel.mp4"
+              poster="/effects/this-reel.jpg"
+              className="aspect-[9/16] w-full rounded-2xl object-cover"
+              style={{ border: `1px solid ${RULE}`, background: "#1f211e" }}
+              controls
+              playsInline
+              preload="metadata"
+              aria-label="My 'I binned my video editor' reel, edited by the reel-effects skill"
+            />
+          </figure>
+          <div>
+            <p className={`${mono} mb-2 text-xs uppercase tracking-widest`} style={{ color: FAINT }}>What fires when</p>
+            <div style={{ borderTop: `1px solid ${RULE}` }}>
+              {BEATS.map((b) => (
+                <div key={b.t} className="grid grid-cols-[3rem_1fr] gap-x-4 py-3" style={{ borderBottom: `1px solid ${RULE_SOFT}` }}>
+                  <span className={`${mono} text-sm`} style={{ color: ENERGY }}>{b.t}</span>
+                  <span className="text-base leading-snug">
+                    {b.effect}
+                    <span className="block text-sm" style={{ color: DIM }}>{b.on}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 text-sm leading-relaxed" style={{ color: FAINT }}>{DEMO_NOTE}</p>
+          </div>
         </div>
       </header>
 

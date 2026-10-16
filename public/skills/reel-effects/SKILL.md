@@ -97,6 +97,8 @@ That file rendered the reference test, an 8 s close take, on 16 Oct 2026.
   free-running CSS animation. Boil seeds step from `floor(t × fps)`.
 - **Real receipts only.** Headlines, charts and screenshots inside effects must be real.
 - **A second `fg.webm` (doodle boil) triggers a `duplicate_media_discovery_risk` lint warning.** It renders correctly; leave it.
+- **Don't split the cut-out across processes for speed.** It's CPU-bound: three parallel chunks each ran 3× slower. If you do join chunks, re-encode the joined file (`-c:v libvpx-vp9 -pix_fmt yuva420p -g 30`). `concat -c copy` leaves frames that decode transparent when seeked, and the renderer seeks.
+- **To hold the last frame** (so a CTA finishes): pad `source.mp4` with `tpad=stop_mode=clone:stop_duration=0.8` + `apad=pad_dur=0.8`. Pad `fg.webm` by appending 24 frames of its last frame, then re-encode as above.
 
 ## Effect index
 
@@ -115,7 +117,7 @@ Cards with measurements and build notes: `references/effects.md`.
 | 05 | digital zoom | ✅ | no | `05-digital-zoom` |
 | 06 | phone mockup | 📝 | standing: yes | registry `device-frame-stage`, `vfx-iphone-device` |
 | 07 | checklist | 📝 | no | registry `marker-checklist-card` + captions engine |
-| 08 | headline wall | 📝 | yes (dim) | `00-room-dim` + slam cards |
+| 08 | headline wall | ✅ | yes (behind) | `08-headline-wall` (+ `00-room-dim`) |
 | 09 | zoom-through cut | 📝 | no | registry `zoom-through-transition` |
 | 10 | chart grow | 📝 | yes (behind) | `00-room-dim` + registry `chart-story` |
 | 11 | pull-back reveal | 📝 | no | registry `pull-back-reveal` |
@@ -160,3 +162,8 @@ made. They don't replace the hook and the CTA. Do these first:
 - **Shoot 2 s of the empty room before you sit down.** That's the clean plate vertigo needs.
 - **Leave headroom.** Top of the head at about 25–30% of frame height gives cover story, glass type and orbit room above it.
 - **Close takes shrink everything.** Face at ~30% of the frame height means halving the zoom moves, raising the orbit's RY, and the CTA's close-take values (`Y 1420, RISE 185`).
+- **Very close takes (face ~40%, chin ≈ y 1320) leave only the side columns and the top band:**
+  - Use `08-headline-wall` instead of an orbit, with cards at x 20 and x 836, W 224.
+  - Captions go at Y 1440.
+  - Put the CTA in the top band (`Y 400, RISE 160`).
+  - Cover-story TOP ≈ 420, so the cap cuts the letters.
