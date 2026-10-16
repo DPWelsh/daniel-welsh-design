@@ -211,6 +211,15 @@ const ENTRIES: Entry[] = [
       "How I redid all 21 of my reel covers: a look to copy, a still from every reel, titles from the transcript, real stickers, and every prompt.",
     when: "When your grid looks like nobody planned it.",
   },
+  {
+    href: "/effects",
+    n: "022",
+    title: "Video effects",
+    accent: "with no editor.",
+    blurb:
+      "The Claude Code skill that replaced my video editor: captions, a headline wall, cover story, doodle boil, spotlight and a comment CTA, rendered free with HyperFrames.",
+    when: "When your reels look like a phone recording.",
+  },
 ];
 
 export default function TutorialsPage() {
